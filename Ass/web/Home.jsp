@@ -19,7 +19,7 @@
         <header>
             <div class="image-text">
                 <span class="image">
-                    <img src="Hug.png" alt="">
+                    <img src="PNG/Hug.png" alt="">
                 </span>
 
                 <div class="text logo-text">
