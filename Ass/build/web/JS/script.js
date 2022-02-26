@@ -1,26 +1,52 @@
-const body = document.querySelector('body'),
-      sidebar = body.querySelector('nav'),
-      toggle = body.querySelector(".toggle"),
-      searchBtn = body.querySelector(".search-box"),
-      modeSwitch = body.querySelector(".toggle-switch"),
-      modeText = body.querySelector(".mode-text");
+const body = document.querySelector("body"),
+        nav = document.querySelector("nav"),
+        modeToggle = document.querySelector(".dark-light"),
+        searchToggle = document.querySelector(".searchToggle"),
+        sidebarOpen = document.querySelector(".sidebarOpen"),
+        siderbarClose = document.querySelector(".siderbarClose");
 
+let getMode = localStorage.getItem("mode");
+if (getMode && getMode === "dark-mode") {
+    body.classList.add("dark");
+}
 
-toggle.addEventListener("click" , () =>{
-    sidebar.classList.toggle("close");
-})
-
-searchBtn.addEventListener("click" , () =>{
-    sidebar.classList.remove("close");
-})
-
-modeSwitch.addEventListener("click" , () =>{
+// js code to toggle dark and light mode
+modeToggle.addEventListener("click", () => {
+    modeToggle.classList.toggle("active");
     body.classList.toggle("dark");
-    
-    if(body.classList.contains("dark")){
-        modeText.innerText = "Nền sáng";
-    }else{
-        modeText.innerText = "Nền tối";
-        
+
+    // js code to keep user selected mode even page refresh or file reopen
+    if (!body.classList.contains("dark")) {
+        localStorage.setItem("mode", "light-mode");
+    } else {
+        localStorage.setItem("mode", "dark-mode");
+    }
+});
+
+// js code to toggle search box
+searchToggle.addEventListener("click", () => {
+    searchToggle.classList.toggle("active");
+});
+
+
+//   js code to toggle sidebar
+sidebarOpen.addEventListener("click", () => {
+    nav.classList.add("active");
+});
+
+body.addEventListener("click", e => {
+    let clickedElm = e.target;
+
+    if (!clickedElm.classList.contains("sidebarOpen") && !clickedElm.classList.contains("menu")) {
+        nav.classList.remove("active");
+    }
+});
+
+//   js code to sticky sidebar
+window.addEventListener("scroll", () => {
+    if (document.documentElement.scrollTop > 20) {
+        nav.classList.add("sticky");
+    } else {
+        nav.classList.remove("sticky");
     }
 });
