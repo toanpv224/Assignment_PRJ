@@ -124,8 +124,8 @@ nav .nav-bar .logo a {
 
 .nav-links .sub-menu {
     position: absolute;
-    top: 60px;
-    left: 430px;
+    top: 50px;
+    left: 360px;
     background: var(--nav-color);
     line-height: 40px;
     border-radius: 0 0 4px 4px;
@@ -348,10 +348,10 @@ a {
     border-radius: 10px;
     border: none;
     margin-bottom: 15px;
-    color: #bfc0c0;
-    background: #315752;
+    color: var(--text-color);
+    background: #31575228;
     box-shadow: inset 1px 1px 1px #2c2c2c,
-        inset -1px -1px 1px #e7e4e448;
+        inset -1px -1px 1px #75727248;
     outline: none;
 }
 
@@ -370,6 +370,10 @@ a {
     box-shadow: 5px 5px 10px #262626,
         -5px -5px 10px #262626;
     border: none;
+}
+
+.form-check-label {
+    color: var(--text-color);
 }
 
 .second-button {
@@ -440,6 +444,8 @@ p {
     }
 
     .nav-bar .nav-links {
+        font-size: 9px;
+
         flex-direction: column;
         padding-top: 30px;
     }
@@ -473,11 +479,17 @@ p {
     }
 }
 
-.home img{
-    height: 60vh;
+body>.home-bg {
+    border: none;
+}
+
+.home-bg img {
+    height: 55vh;
     width: 100%;
     background-size: cover;
     background-position: center;
+    margin-top: -30px;
+    margin-bottom: 10px;
 }
 
 .text {
@@ -485,7 +497,7 @@ p {
     background: #f2f2f2;
 }
 
-.text, .sp-section {
+.text {
     color: var(--text-color-3);
     padding: 40px 80px;
     margin-left: 200px;
@@ -494,167 +506,20 @@ p {
     box-shadow: -2px 0 rgba(0, 0, 0, 0.1);
 }
 
-.text h2 {
-    font-size: 30px;
-    font-weight: 500;
-    color: var(--text-color-2);
-    margin-bottom: 6px;
+.home-sp {
+    border-left: 30px solid #ffffff;
+    border-right: 30px solid #ffffff;
 }
 
-
-body .sp-section {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #f2f2f2;
-}
-
-
-.sp-section {
-    position: relative;
-    left: 0%;
-    height: 650px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding-bottom: 200px
-}
-
-.swiper {
-    width: 950px;
-}
-
-.card {
-    position: relative;
-    background: #fff;
-    border-radius: 20px;
-    margin: 20px 0;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-}
-
-.card::before {
-    content: "";
-    position: absolute;
-    height: 0%;
-    width: 90%;
-    background: var(--nav-color);
-    border-radius: 200px 200px 0 0;
-}
-
-.card .card-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 30px;
-    position: relative;
-    z-index: 100;
-}
-
-section .card .image {
-    height: 300px;
-    width: 296px;
-    border-radius: 5%;
-    padding: 3px;
-    background: var(--nav-color);
-}
-
-section .card .image img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 5%;
-    border: 2px solid #fff;
-}
-
-.card .name-product {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10px;
-    color: #1b1b1b;
-    ;
-}
-
-.name-product .name {
-    font-size: 20px;
-    font-weight: 600;
-}
-
-.name-product .title {
-    font-size: 15px;
-    font-weight: 500;
-}
-
-.card .button {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-}
-
-.card .button button {
-    background: var(--nav-color);
-    outline: none;
-    border: none;
-    color: var(--text-color);
-    padding: 8px 22px;
-    border-radius: 20px;
-    font-size: 14px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.card .button .add-cart {
-    background: #f76300;
-    outline: none;
-    border: none;
-    color: #fff;
-    padding: 8px 22px;
-    border-radius: 20px;
-    font-size: 14px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.card .button .add-cart i {
-    position: relative;
-    top: 2.5px;
-    left: 2px;
-}
-
-.button button:hover {
-    background: #16abd0;
-}
-
-.swiper-pagination {
-    position: absolute;
-    top: 67%;
-}
-
-.swiper-pagination-bullet {
-    height: 7px;
-    width: 26px;
-    border-radius: 25px;
-    background: var(--nav-color);
-}
-
-.swiper-button-next, .swiper-button-prev {
-    opacity: 0.7;
-    color: var(--nav-color);
-    transition: all 0.3s ease;
-}
-
-.swiper-button-next:hover, .swiper-button-prev:hover {
-    opacity: 1;
-    color: var(--nav-color);
-}
-
-.modal-footer {
+.session-footer .modal-footer {
     text-align: center;
     background-color: var(--nav-color);
     color: var(--text-color);
     margin-top: 30px;
     padding-bottom: 20px;
+}
+
+.product-inner{
+    box-shadow: 5px 5px 10px #262626,
+        -5px -5px 10px #262626;
 }
