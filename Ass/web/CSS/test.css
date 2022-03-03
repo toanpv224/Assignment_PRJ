@@ -1,3 +1,27 @@
+/* ===== Colours ===== */
+:root {
+    --body-color: #E4E9F7;
+    --nav-color: #307e7e;
+    --side-nav: #010718;
+    --text-color: #FFF;
+    --text-color-2: rgb(42, 120, 165);
+    --text-color-3: rgb(27, 27, 27);
+    --search-bar: #F2F2F2;
+    --search-text: #010718;
+}
+
+
+
+body.dark {
+    --body-color: #18191A;
+    --nav-color: #242526;
+    --side-nav: #242526;
+    --text-color: #CCC;
+    --text-color-2: rgb(255, 238, 0);
+    --text-color-3: rgb(223, 251, 250);
+    --search-bar: #242526;
+}
+
 button:focus, input:focus, optgroup:focus, select:focus, textarea:focus {
     outline: none;
 }
@@ -1120,6 +1144,7 @@ button.btn-login:hover {
 /* HEADER 2 */
 .header-v2 .main-header>.row {
     margin: 0;
+    box-shadow: 42px;
 }
 
 .header-v2 .main-header .header-left {
@@ -2389,7 +2414,7 @@ del span.amount, .widget>ul>li del span.amount {
 }
 
 .collection-grid .product-body {
-    
+
     bottom: 25px;
     text-align: center;
 }
@@ -2681,7 +2706,7 @@ ul.list-item-product li a:hover {
 
 .summary.entry-summary .single-product-button {
     display: block;
-    
+
 }
 
 .summary.entry-summary .quantity span {
