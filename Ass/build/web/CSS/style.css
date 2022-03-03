@@ -17,25 +17,36 @@
     --nav-color: #307e7e;
     --side-nav: #010718;
     --text-color: #FFF;
-    --text-color-2: rgb(42, 120, 165);
-    --text-color-3: rgb(41, 70, 68);
+    --text-color-2: rgb(110, 187, 231);
+    --text-color-3: rgb(27, 27, 27);
     --search-bar: #F2F2F2;
     --search-text: #010718;
 }
 
-body {
-    height: 100vh;
-    background-color: var(--body-color);
-}
+
 
 body.dark {
     --body-color: #18191A;
     --nav-color: #242526;
     --side-nav: #242526;
     --text-color: #CCC;
-    --text-color-2: rgb(144, 189, 186);
-    --text-color-3: rgb(41, 70, 68);
+    --text-color-2: rgb(255, 238, 0);
+    --text-color-3: rgb(223, 251, 250);
     --search-bar: #242526;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.25px;
+    line-height: 24px;
+    outline: none !important;
+    color: #949494;
+    background: var(--body-color);
+}
+
+body {
+    height: 100vh;
 }
 
 nav {
@@ -507,8 +518,9 @@ body>.home-bg {
 }
 
 .home-sp {
-    border-left: 30px solid #ffffff;
-    border-right: 30px solid #ffffff;
+    border-left: 30px solid var(--body-color);
+    border-right: 30px solid var(--body-color);
+    ;
 }
 
 .session-footer .modal-footer {
@@ -519,7 +531,19 @@ body>.home-bg {
     padding-bottom: 20px;
 }
 
-.product-inner{
-    box-shadow: 5px 5px 10px #262626,
-        -5px -5px 10px #262626;
+.product-hover .product-actions a{
+    display:flex;
+    align-items: center;
+    font-size: 20px;
+    background: var(--side-nav);
+    color: var(--text-color);
+    border-radius: 5px;
+}
+
+.product-hover .product-actions a i{
+    color: var(--text-color);
+}
+
+.product-hover .product-actions a i:hover{
+    font-size: 60px;
 }
