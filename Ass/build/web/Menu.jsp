@@ -5,16 +5,16 @@
             <div class="nav-bar">
                 <i class="bx bx-menu sidebarOpen"></i>
 
-                <span class="logo navLogo"><a href="#">TakeYourLove</a></span>
+                <span class="logo navLogo"><a href="Home.jsp">TakeYourLove</a></span>
 
                 <div class="menu">
                     <div class="logo-toggle">
-                        <span class="logo"><a href="#">TakeYourLove</a></span>
+                        <span class="logo"><a href="Home.jsp">TakeYourLove</a></span>
                         <i class="bx bx-x siderbarClose"></i>
                     </div>
 
                     <ul class="nav-links">
-                        <li><a href="#">Trang chủ</a></li>
+                        <li><a href="Home.jsp">Trang chủ</a></li>
                         <li>
                             <a href="#"
                                >Sản phẩm<i class="bx bxs-chevron-down arrow sp-arrow"></i
