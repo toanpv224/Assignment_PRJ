@@ -550,11 +550,22 @@ body>.home-bg {
 
 .home-sp > .row > .product{
     margin-top: 30px;
-        margin-bottom: 30px;
+    margin-bottom: 30px;
 
 }
 .home-sp > .row > .product > .single-product{
     border-radius: 10px;
     box-shadow: 1px 1px 1px var(--search-text), -1px -1px 1px var(--search-text);
 
+}
+.menu ul{
+    margin-bottom: 0;
+}
+
+.session-footer .modal-footer-sp {
+    text-align: center;
+    background-color: var(--nav-color);
+    color: var(--text-color);
+    margin-top: 30px;
+    padding-bottom: 20px;
 }
