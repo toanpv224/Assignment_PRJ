@@ -136,7 +136,7 @@ nav .nav-bar .logo a {
 .nav-links .sub-menu {
     position: absolute;
     top: 50px;
-    left: 360px;
+    left: 590px;
     background: var(--nav-color);
     line-height: 40px;
     border-radius: 0 0 4px 4px;
