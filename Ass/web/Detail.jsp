@@ -62,6 +62,9 @@
     </head>
     <body>
         <jsp:include page="Menu.jsp"></jsp:include>
+            <section class="home-bg">
+                <img src="PNG/bg.jpg" />
+            </section>
             <div class="container">
                 <div class="row">
                 <jsp:include page="Left.jsp"></jsp:include>
@@ -95,23 +98,32 @@
                                         </dl>
 
                                         <hr>
-                                        <div class="row">
-                                            <div class="col-sm-5">
-                                                <dl class="param param-inline">
-                                                    <dt>Quantity: </dt>
-                                                    <dd>
-                                                        <select class="form-control form-control-sm" style="width:70px;">
-                                                            <option> 1 </option>
-                                                            <option> 2 </option>
-                                                            <option> 3 </option>
-                                                        </select>
-                                                    </dd>
-                                                </dl>  <!-- item-property .// -->
-                                            </div> <!-- col.// -->
+                                        <div class="product-signle-options clearfix">
+                                            <div class="selector-wrapper"><label for="productSelect-option-0">Kích thước</label><select class="single-option-selector" data-option="option1" id="productSelect-option-0"><option value="NHỎ">NHỎ</option><option value="TRUNG">TRUNG</option><option value="LỚN">LỚN</option><option value="LỚN HƠN">LỚN HƠN</option></select></div><select name="id" id="productSelect" class="single-option-selector" style="display: none;">
 
-                                        </div> <!-- row.// -->
+
+                                                <option selected="selected" data-sku="" value="1083520888">NHỎ </option>
+
+
+
+                                                <option data-sku="" value="1083520889">TRUNG </option>
+
+
+
+                                                <option data-sku="" value="1083520890">LỚN </option>
+
+
+
+                                                <option data-sku="" value="1083520891">LỚN HƠN </option>
+
+
+                                            </select>
+                                            <div class="product-single-quantity is-hidden">
+                                                <label for="Quantity">Số lượng</label>
+                                                <input type="text" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
+                                            </div>
+                                        </div>
                                         <hr>
-                                        <a href="#" class="btn btn-lg btn-primary text-uppercase"> Buy now </a>
                                         <a href="#" class="btn btn-lg btn-outline-primary text-uppercase"> <i class="fas fa-shopping-cart"></i> Add to cart </a>
                                     </article> <!-- card-body.// -->
                                 </aside> <!-- col.// -->

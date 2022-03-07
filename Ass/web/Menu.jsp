@@ -16,16 +16,16 @@
             <ul class="nav-links">
                 <li><a href="home">Trang chủ</a></li>
                 <li>
-                    <a href="#"
+                    <a href="category?cid=${0}"
                        >Sản phẩm<i class="bx bxs-chevron-down arrow sp-arrow"></i
                         ></a>
                     <ul class="sp-sub-menu sub-menu">
-                        <li><a href="#">Quần</a></li>
-                        <li><a href="#">Áo</a></li>
-                        <li><a href="#">Giày dép</a></li>
-                        <li><a href="#">Phụ kiện</a></li>
+                        <li><a href="category?cid=${3}">Quần</a></li>
+                        <li><a href="category?cid=${2}">Áo thun</a></li>
+                        <li><a href="category?cid=${1}">Áo khoác</a></li>
+                        <li><a href="category?cid=${4}">Phụ kiện</a></li>
                         <li>
-                            <a href="#"
+                            <a href="category?cid=${0}"
                                >Xem thêm<i
                                     class="bx bxs-chevron-right arrow more-arrow"
                                     ></i
@@ -54,45 +54,12 @@
                     <i class="bx bx-search"></i>
                 </div>
             </div>
-            <button onclick="togglePopup()" class="first-button">
+            <a href="Loginform.jsp" class="first-button">
                 Đăng nhập
-            </button>
-            <div class="popup" id="popup-1">
-                <div class="content">
-                    <div class="close-btn" onclick="togglePopup()">×</div>
-
-                    <h1>Đăng nhập</h1>
-                    <div class="input-field">
-                        <input name="username" placeholder="Email" class="validate" />
-                    </div>
-                    <div class="input-field">
-                        <input
-                            name="password"
-                            placeholder="Password"
-                            class="validate"
-                            />
-                    </div>
-                    <div class="input-field">
-                        <input
-                            name="remember"
-                            value="1"
-                            type="checkbox"
-                            class="form-check-input"
-                            id="exampleCheck1"
-                            />
-                        <label class="form-check-label" for="exampleCheck1"
-                               >Remember me</label
-                        >
-                    </div>
-
-                    <button class="second-button">Đăng nhập</button>
-                    <p>Bạn chưa có tài khoản? <a href="#">Đăng kí</a></p>
-                </div>
-            </div>
+            </a>
+            
         </div>
     </div>
 </nav>
 
-<section class="home-bg">
-    <img src="PNG/bg.jpg" />
-</section>
+

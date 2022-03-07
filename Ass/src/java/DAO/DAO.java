@@ -86,7 +86,7 @@ public class DAO extends Context.BaseDAO {
 
     public List<Product> getProductByCID(String cid) {
         List<Product> list = new ArrayList<>();
-        String query = "select * from product\n"
+        String query = "select * from Product\n"
                 + "where cateID = ?";
         try {
             ps = connection.prepareStatement(query);
@@ -161,6 +161,21 @@ public class DAO extends Context.BaseDAO {
                         rs.getDouble(4),
                         rs.getString(5),
                         rs.getString(6));
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    public Category getCategoryByID(String id) {
+        String query = "select * from Category\n"
+                + "where id = ?";
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return new Category(rs.getInt(1),
+                        rs.getString(2));
             }
         } catch (Exception e) {
         }
@@ -312,9 +327,10 @@ public class DAO extends Context.BaseDAO {
             String query = "select count (*) from Product where name like ?";
             ps = connection.prepareStatement(query);
             ps.setString(1, "%" + txtsearch + "%");
-            rs = ps.executeQuery();
-            
-             
+            rs = ps.executeQuery(); 
+            while (rs.next()) {                
+                return rs.getInt(1);
+            }
         } catch (Exception e) {
             
         }
@@ -324,12 +340,11 @@ public class DAO extends Context.BaseDAO {
     public static void main(String[] args) {
         DAO dao = new DAO();
         List<Product> list = dao.getAllProduct();
-        List<Category> listC = dao.getAllCategory();
-        Product p = dao.getProductByID("1");
-//        for (Category o : listC) {
-//            System.out.println(o);
+//        for (Product product : list) {
+//            System.out.println(product);
 //        }
-        System.out.println(p);
+        int i =dao.count("a");
+        System.out.println(i);
     }
 
     @Override

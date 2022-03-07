@@ -8,6 +8,10 @@
         <servlet-name>DetailController</servlet-name>
         <servlet-class>Controller.DetailController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CategoryControl</servlet-name>
+        <servlet-class>Controller.CategoryControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeControll</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>DetailController</servlet-name>
         <url-pattern>/detail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CategoryControl</servlet-name>
+        <url-pattern>/category</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

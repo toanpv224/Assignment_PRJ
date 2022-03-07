@@ -39,6 +39,9 @@
     <body>
 
         <jsp:include page="Menu.jsp"></jsp:include>
+            <section class="home-bg">
+                <img src="PNG/bg.jpg" />
+            </section>
 
         <jsp:include page="List_sp.jsp"></jsp:include>
 
@@ -47,7 +50,7 @@
                 <div class="row">
                 <c:forEach items="${sessionScope.listP}" var="o">
 
-                    <div class="col-md-3 col-sm-6 col-xs-12 product">
+                    <div class="col-md-4 product">
                         <div class="swiper-slide card">
                             <div class="card-content">
                                 <div class="image">

@@ -39,16 +39,18 @@
     <body>
 
         <jsp:include page="Menu.jsp"></jsp:include>
-            <section class="home-bg">
-                <img src="PNG/bg.jpg" />
-            </section>
 
         <jsp:include page="List_sp.jsp"></jsp:include>
 
 
-            <section class="home-sp">
+            <section class="home-sp">       
                 <div class="row">
-                <c:forEach items="${sessionScope.listP}" var="o">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="home">Home</a></li>
+                        <li class="breadcrumb-item"><a href="category?cid=${0}">Category</a></li>
+                        <li class="breadcrumb-item active" aria-current="#">${requestScope.cName.cname}</li>
+                    </ol>
+                <c:forEach items="${requestScope.listCP}" var="o">
 
                     <div class="col-md-4 product">
                         <div class="swiper-slide card">
@@ -87,5 +89,3 @@
         <script src="JS/script.js"></script>
     </body>
 </html>
-
-
