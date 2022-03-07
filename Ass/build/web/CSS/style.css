@@ -19,6 +19,7 @@
     --text-color: #FFF;
     --text-color-2: rgb(110, 187, 231);
     --text-color-3: rgb(27, 27, 27);
+    --text-color-4: rgb(24, 19, 19);
     --search-bar: #F2F2F2;
     --search-text: #010718;
 }
@@ -31,7 +32,8 @@ body.dark {
     --side-nav: #242526;
     --text-color: #CCC;
     --text-color-2: rgb(255, 238, 0);
-    --text-color-3: rgb(223, 251, 250);
+    --text-color-3: rgb(223, 251, 250);     
+    --text-color-4: #FFF;
     --search-bar: #242526;
 }
 
@@ -41,7 +43,7 @@ body {
     letter-spacing: 0.25px;
     line-height: 24px;
     outline: none !important;
-    color: #949494;
+    color: var(--text-color);
     background: var(--body-color);
 }
 
@@ -568,4 +570,97 @@ body>.home-bg {
     color: var(--text-color);
     margin-top: 30px;
     padding-bottom: 20px;
+}
+
+.card{
+    background: var(--text-color);
+    border-radius: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card .card-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+    z-index: 100;
+}
+
+section .card .image{
+    height: 300px;
+    width: 296px;
+    border-radius: 5%;
+    padding: 3px;
+}
+
+section .card .image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5%;
+}
+
+.card .name-pro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    color: #1b1b1b;;
+} 
+
+.name-pro .name{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.name-pro .pro-title{
+    font-size:15px;
+    font-weight: 500;
+}
+
+.card .button{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.card .button button{
+    background: var(--nav-color);
+    outline: none;
+    border: none;
+    color: var(--text-color);
+    padding: 8px 22px;
+    border-radius: 20px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.hireMe a{
+    color: var(--text-color);
+}
+
+.button button:hover,.hireMe a:hover{
+    background: #79cfdf;
+    color: var(--nav-color);
+}
+
+.text-w a{
+    color: var(--nav-color);
+}
+
+.card-body ,.item-property{
+    color: var(--text-color-4);
+}
+
+.card-body .item-property p{
+    color: var(--text-color-4);
+}
+
+.container .card {
+    background: var(--search-bar);
+}
+.img-big-wrap img{
+    border-radius: 15px;
 }
