@@ -65,7 +65,7 @@ public class HomeControll extends HttpServlet {
         List<Product> list = dao.getAllProduct();
         HttpSession session = request.getSession();
 
-        session.setAttribute("list", list);
+        session.setAttribute("listP", list);
         response.sendRedirect("Home.jsp");
     }
 
