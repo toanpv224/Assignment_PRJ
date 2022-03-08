@@ -576,3 +576,12 @@ section .card .image img{
 .img-big-wrap img{
     border-radius: 15px;
 }
+.list-group .list-group-item {
+    background: none;
+   border: none;
+}
+
+.home-sp .row .page-trang{
+   position: absolute;
+    left: 500px;
+}

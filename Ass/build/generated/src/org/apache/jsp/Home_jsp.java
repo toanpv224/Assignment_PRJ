@@ -14,6 +14,7 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
   private static java.util.List<String> _jspx_dependants;
 
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_end_begin;
 
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
@@ -23,10 +24,12 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   public void _jspInit() {
     _jspx_tagPool_c_forEach_var_items = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_c_forEach_var_end_begin = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
   }
 
   public void _jspDestroy() {
     _jspx_tagPool_c_forEach_var_items.release();
+    _jspx_tagPool_c_forEach_var_end_begin.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -111,7 +114,18 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       if (_jspx_meth_c_forEach_0(_jspx_page_context))
         return;
       out.write("\r\n");
+      out.write("                <div class=\"pagination\">\r\n");
+      out.write("                    <a href=\"home?page=");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${1}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\">First</a>\r\n");
+      out.write("                    ");
+      if (_jspx_meth_c_forEach_1(_jspx_page_context))
+        return;
       out.write("\r\n");
+      out.write("                    <a href=\"home?page=");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${requestScope.num}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\">Last</a>\r\n");
+      out.write("                </div>\r\n");
       out.write("            </div>\r\n");
       out.write("        </section>\r\n");
       out.write("\r\n");
@@ -122,7 +136,25 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("        <!-- Swiper JS -->\r\n");
       out.write("        <script src=\"https://unpkg.com/swiper/swiper-bundle.min.js\"></script>\r\n");
-      out.write("\r\n");
+      out.write("        <script>\r\n");
+      out.write("            function searchByName(param) {\r\n");
+      out.write("                var txtSearch = param.value;\r\n");
+      out.write("                $.ajax({\r\n");
+      out.write("                    url: \"/Project_banhang/searchAjax\",\r\n");
+      out.write("                    type: \"get\", //send it through get method\r\n");
+      out.write("                    data: {\r\n");
+      out.write("                        txt: txtSearch\r\n");
+      out.write("                    },\r\n");
+      out.write("                    success: function (data) {\r\n");
+      out.write("                        var row = document.getElementById(\"content\");\r\n");
+      out.write("                        row.innerHTML = data;\r\n");
+      out.write("                    },\r\n");
+      out.write("                    error: function (xhr) {\r\n");
+      out.write("                        //Do Something to handle error\r\n");
+      out.write("                    }\r\n");
+      out.write("                });\r\n");
+      out.write("            }\r\n");
+      out.write("        </script>\r\n");
       out.write("        <script src=\"JS/script.js\"></script>\r\n");
       out.write("    </body>\r\n");
       out.write("</html>\r\n");
@@ -149,7 +181,7 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
     _jspx_th_c_forEach_0.setParent(null);
-    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sessionScope.listP}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${requestScope.listP}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     _jspx_th_c_forEach_0.setVar("o");
     int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
     try {
@@ -210,6 +242,49 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
     } finally {
       _jspx_th_c_forEach_0.doFinally();
       _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_0);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_c_forEach_1(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_end_begin.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_forEach_1.setPageContext(_jspx_page_context);
+    _jspx_th_c_forEach_1.setParent(null);
+    _jspx_th_c_forEach_1.setBegin(((java.lang.Integer) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${1}", java.lang.Integer.class, (PageContext)_jspx_page_context, null)).intValue());
+    _jspx_th_c_forEach_1.setEnd(((java.lang.Integer) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${requestScope.num}", java.lang.Integer.class, (PageContext)_jspx_page_context, null)).intValue());
+    _jspx_th_c_forEach_1.setVar("i");
+    int[] _jspx_push_body_count_c_forEach_1 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_forEach_1 = _jspx_th_c_forEach_1.doStartTag();
+      if (_jspx_eval_c_forEach_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\r\n");
+          out.write("                        <a href=\"home?page=");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write('"');
+          out.write('>');
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</a>\r\n");
+          out.write("                    ");
+          int evalDoAfterBody = _jspx_th_c_forEach_1.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_forEach_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_forEach_1[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_forEach_1.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_forEach_1.doFinally();
+      _jspx_tagPool_c_forEach_var_end_begin.reuse(_jspx_th_c_forEach_1);
     }
     return false;
   }

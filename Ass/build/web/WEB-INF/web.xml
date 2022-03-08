@@ -12,6 +12,14 @@
         <servlet-name>CategoryControl</servlet-name>
         <servlet-class>Controller.CategoryControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchControl</servlet-name>
+        <servlet-class>Controller.SearchControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchByAjax</servlet-name>
+        <servlet-class>Controller.SearchByAjax</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeControll</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>CategoryControl</servlet-name>
         <url-pattern>/category</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchControl</servlet-name>
+        <url-pattern>/search</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchByAjax</servlet-name>
+        <url-pattern>/SearchByAjax</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

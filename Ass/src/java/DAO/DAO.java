@@ -337,6 +337,14 @@ public class DAO extends Context.BaseDAO {
         return 0;
     }
 
+    public List<Product> getListByPage(List<Product> list, int start, int end) {
+        ArrayList<Product> arr = new ArrayList<>();
+        for (int i = start; i < end; i++) {
+            arr.add(list.get(i));
+        }
+        return arr;
+    }
+    
     public static void main(String[] args) {
         DAO dao = new DAO();
         List<Product> list = dao.getAllProduct();

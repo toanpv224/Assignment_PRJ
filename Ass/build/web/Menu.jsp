@@ -42,22 +42,23 @@
                 <i class="bx bx-moon moon"></i>
                 <i class="bx bx-sun sun"></i>
             </div>
+            <form action="search" method="post">
+                <div class="searchBox">
+                    <div class="searchToggle">
+                        <i class="bx bx-x cancel"></i>
+                        <i class="bx bx-search search"></i>
+                    </div>
 
-            <div class="searchBox">
-                <div class="searchToggle">
-                    <i class="bx bx-x cancel"></i>
-                    <i class="bx bx-search search"></i>
+                    <div class="search-field">
+                        <input oninput="searchByName(this)" value="${txtS}" name="txt" type="text" placeholder="Tìm  kiếm..." />
+                        <i class="bx bx-search"></i>
+                    </div>
                 </div>
-
-                <div class="search-field">
-                    <input type="text" placeholder="Tìm  kiếm..." />
-                    <i class="bx bx-search"></i>
-                </div>
-            </div>
+            </form>
             <a href="Loginform.jsp" class="first-button">
                 Đăng nhập
             </a>
-            
+
         </div>
     </div>
 </nav>

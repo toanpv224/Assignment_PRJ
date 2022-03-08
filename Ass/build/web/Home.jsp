@@ -48,7 +48,7 @@
 
             <section class="home-sp">
                 <div class="row">
-                <c:forEach items="${sessionScope.listP}" var="o">
+                <c:forEach items="${requestScope.listP}" var="o">
 
                     <div class="col-md-4 product">
                         <div class="swiper-slide card">
@@ -77,13 +77,40 @@
 
             </div>
         </section>
+        <section class="home-sp">
+            <div class="page-trang">
+                <a href="home?page=${1}">First</a>
+                <c:forEach begin="${1}" end="${requestScope.num}" var="i">
+                    <a href="home?page=${i}">${i}</a>
+                </c:forEach>
+                <a href="home?page=${requestScope.num}">Last</a>
+            </div>
+        </section>
 
         <jsp:include page="Footer.jsp"></jsp:include>
 
 
         <!-- Swiper JS -->
         <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
+        <script>
+            function searchByName(param) {
+                var txtSearch = param.value;
+                $.ajax({
+                    url: "/Project_banhang/searchAjax",
+                    type: "get", //send it through get method
+                    data: {
+                        txt: txtSearch
+                    },
+                    success: function (data) {
+                        var row = document.getElementById("content");
+                        row.innerHTML = data;
+                    },
+                    error: function (xhr) {
+                        //Do Something to handle error
+                    }
+                });
+            }
+        </script>
         <script src="JS/script.js"></script>
     </body>
 </html>

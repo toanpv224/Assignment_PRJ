@@ -6,21 +6,23 @@
 package Controller;
 
 import DAO.DAO;
+import Model.Category;
 import Model.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author tretr
+ * @author trinh
  */
-public class HomeControll extends HttpServlet {
+@WebServlet(name = "SearchControl", urlPatterns = {"/search"})
+public class SearchControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,18 +36,18 @@ public class HomeControll extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet HomeControll</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet HomeControll at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        request.setCharacterEncoding("UTF-8");
+        String txtSearch = request.getParameter("txt");//giay chay bo
+        DAO dao = new DAO();
+        List<Product> list = dao.searchByName(txtSearch);
+        List<Category> listC = dao.getAllCategory();
+        Product last = dao.getLast();
+        
+        request.setAttribute("listCP", list);
+        request.setAttribute("listCC", listC);
+        request.setAttribute("p", last);
+        request.setAttribute("txtS", txtSearch);
+        request.getRequestDispatcher("subHome.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -60,40 +62,7 @@ public class HomeControll extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        DAO dao = new DAO();
-        List<Product> p = dao.getAllProduct();
-        HttpSession session = request.getSession();
-        
-        
-        //so trang va so san pham trong 1 trang
-        int page, numperpage = 6;
-        // so san pham muoon phan trang
-        int size = p.size();
-        // so trang cua maf nguoi dung ddang chon
-        int num = (size % 6 == 0 ? (size / 6) : ((size / 6)) + 1);
-        //lay so trang truyen vao
-        String xpage = request.getParameter("page");
-        //neu so trang truyen vao = null tra ve trang so 1
-        if (xpage == null) {
-            page = 1;
-        //neu so trang truyen vao != null tra ve trang truyen vao
-        } else {
-            page = Integer.parseInt(xpage);
-        }
-        //lay vi tri the tu list san pham muon phan trang tu so san pham mong muon trong 1 trang
-        int start, end;
-        start = (page - 1) * numperpage;//index bat dau
-        end = Math.min(page * numperpage, size);//index ket thuc
-        //chia cac san pham muon phan trang tu vi tri -> tra ve 1 trang voi so san pham mong muon trong 1 trang
-        List<Product> list = dao.getListByPage(p, start, end);
-        
-        //tra ve list da phan trang
-        
-        
-        request.setAttribute("listP", list);
-        request.setAttribute("num", num);
-        request.getRequestDispatcher("Home.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
