@@ -578,10 +578,35 @@ section .card .image img{
 }
 .list-group .list-group-item {
     background: none;
-   border: none;
+    border: none;
 }
 
-.home-sp .row .page-trang{
-   position: absolute;
-    left: 500px;
+.home-sp .page-trang{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 30px;
+    height: 10vh;
+}
+
+.home-sp .page-trang a{
+    font-size: 25px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    padding: 4px 4px 4px 4px;
+    margin-left: 3px;
+    margin-right: 3px;
+    float: left;
+    border-radius: 2px;
+    background: var(--text-color);
+    color: var(--nav-color);
+}
+.home-sp .page-trang a:hover{
+    background: var(--nav-color);
+    color: var(--text-color);
+}
+
+.home-sp .page-trang .page-num {
+    width: 30px;
+    text-align: center;
 }

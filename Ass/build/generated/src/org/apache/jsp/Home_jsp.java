@@ -114,18 +114,21 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       if (_jspx_meth_c_forEach_0(_jspx_page_context))
         return;
       out.write("\r\n");
-      out.write("                <div class=\"pagination\">\r\n");
-      out.write("                    <a href=\"home?page=");
+      out.write("\r\n");
+      out.write("            </div>\r\n");
+      out.write("        </section>\r\n");
+      out.write("        <section class=\"home-sp\">\r\n");
+      out.write("            <div class=\"page-trang\">\r\n");
+      out.write("                <a href=\"home?page=");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${1}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("\">First</a>\r\n");
-      out.write("                    ");
+      out.write("                ");
       if (_jspx_meth_c_forEach_1(_jspx_page_context))
         return;
       out.write("\r\n");
-      out.write("                    <a href=\"home?page=");
+      out.write("                <a href=\"home?page=");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${requestScope.num}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("\">Last</a>\r\n");
-      out.write("                </div>\r\n");
       out.write("            </div>\r\n");
       out.write("        </section>\r\n");
       out.write("\r\n");
@@ -263,13 +266,13 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       if (_jspx_eval_c_forEach_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
           out.write("\r\n");
-          out.write("                        <a href=\"home?page=");
+          out.write("                    <a href=\"home?page=");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write('"');
           out.write('>');
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</a>\r\n");
-          out.write("                    ");
+          out.write("                ");
           int evalDoAfterBody = _jspx_th_c_forEach_1.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
             break;

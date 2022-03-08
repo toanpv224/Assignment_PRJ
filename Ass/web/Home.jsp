@@ -81,7 +81,7 @@
             <div class="page-trang">
                 <a href="home?page=${1}">First</a>
                 <c:forEach begin="${1}" end="${requestScope.num}" var="i">
-                    <a href="home?page=${i}">${i}</a>
+                    <a class="page-num" href="home?page=${i}">${i}</a>
                 </c:forEach>
                 <a href="home?page=${requestScope.num}">Last</a>
             </div>
