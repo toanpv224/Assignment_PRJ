@@ -143,7 +143,7 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            function searchByName(param) {\r\n");
       out.write("                var txtSearch = param.value;\r\n");
       out.write("                $.ajax({\r\n");
-      out.write("                    url: \"/Project_banhang/searchAjax\",\r\n");
+      out.write("                    url: \"SearchByAjax\",\r\n");
       out.write("                    type: \"get\", //send it through get method\r\n");
       out.write("                    data: {\r\n");
       out.write("                        txt: txtSearch\r\n");
@@ -266,7 +266,7 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       if (_jspx_eval_c_forEach_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
           out.write("\r\n");
-          out.write("                    <a href=\"home?page=");
+          out.write("                    <a class=\"page-num\" href=\"home?page=");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write('"');
           out.write('>');

@@ -10,6 +10,7 @@ import Model.Category;
 import Model.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -36,73 +37,45 @@ public class CategoryControl extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String cateID = request.getParameter("cid");
+        String xpage = request.getParameter("page");//lay so trang truyen vao          
+        DAO dao = new DAO();
+        List<Category> listC = dao.getAllCategory();
         //da lay dc category id ve roi
+
+        List<Product> p = new ArrayList<Product>();
         if (!cateID.equals("0")) {
-            DAO dao = new DAO();
-            List<Product> p = dao.getProductByCID(cateID);
-            List<Category> listC = dao.getAllCategory();
-            Category c = dao.getCategoryByID(cateID);
-
-            //so trang va so san pham trong 1 trang
-            int page, numperpage = 3;
-            // so san pham muoon phan trang
-            int size = p.size();
-            // so trang cua maf nguoi dung ddang chon
-            int num = (size % 3 == 0 ? (size / 3) : ((size / 3)) + 1);
-            //lay so trang truyen vao
-            String xpage = request.getParameter("page");
-            //neu so trang truyen vao = null tra ve trang so 1
-            if (xpage == null) {
-                page = 1;
-                //neu so trang truyen vao != null tra ve trang truyen vao
-            } else {
-                page = Integer.parseInt(xpage);
-            }
-            //lay vi tri the tu list san pham muon phan trang tu so san pham mong muon trong 1 trang
-            int start, end;
-            start = (page - 1) * numperpage;//index bat dau
-            end = Math.min(page * numperpage, size);//index ket thuc
-            //chia cac san pham muon phan trang tu vi tri -> tra ve 1 trang voi so san pham mong muon trong 1 trang
-            List<Product> list = dao.getListByPage(p, start, end);
-
-            //tra ve list da phan trang
-            request.setAttribute("listCP", list);
-            request.setAttribute("listCC", listC);
-            request.setAttribute("cName", c);
-            request.setAttribute("num", num);
-            request.setAttribute("tag", cateID);
-            request.getRequestDispatcher("subHome.jsp").forward(request, response);
+            p = dao.getProductByCID(cateID);
         } else {
-            DAO dao = new DAO();
-            List<Product> p = dao.getAllProduct();
-
-            //so trang va so san pham trong 1 trang
-            int page, numperpage = 6;
-            // so san pham muoon phan trang
-            int size = p.size();
-            // so trang cua maf nguoi dung ddang chon
-            int num = (size % 6 == 0 ? (size / 6) : ((size / 6)) + 1);
-            //lay so trang truyen vao
-            String xpage = request.getParameter("page");
-            //neu so trang truyen vao = null tra ve trang so 1
-            if (xpage == null) {
-                page = 1;
-                //neu so trang truyen vao != null tra ve trang truyen vao
-            } else {
-                page = Integer.parseInt(xpage);
-            }
-            //lay vi tri the tu list san pham muon phan trang tu so san pham mong muon trong 1 trang
-            int start, end;
-            start = (page - 1) * numperpage;//index bat dau
-            end = Math.min(page * numperpage, size);//index ket thuc
-            //chia cac san pham muon phan trang tu vi tri -> tra ve 1 trang voi so san pham mong muon trong 1 trang
-            List<Product> list = dao.getListByPage(p, start, end);
-
-            //tra ve list da phan trang
-            request.setAttribute("listCP", list);
-            request.setAttribute("num", num);
-            request.getRequestDispatcher("subHome.jsp").forward(request, response);
+            p = dao.getAllProduct();
         }
+
+        //so trang va so san pham trong 1 trang
+        int page, numperpage = 3;
+        // so san pham muoon phan trang
+        int size = p.size();
+        // so trang cua maf nguoi dung ddang chon
+        int num = (size % 3 == 0 ? (size / 3) : ((size / 3)) + 1);
+        //lay so trang truyen vao          
+        //neu so trang truyen vao = null tra ve trang so 1
+        if (xpage == null) {
+            page = 1;
+            //neu so trang truyen vao != null tra ve trang truyen vao
+        } else {
+            page = Integer.parseInt(xpage);
+        }
+        //lay vi tri the tu list san pham muon phan trang tu so san pham mong muon trong 1 trang
+        int start, end;
+        start = (page - 1) * numperpage;//index bat dau
+        end = Math.min(page * numperpage, size);//index ket thuc
+        //chia cac san pham muon phan trang tu vi tri -> tra ve 1 trang voi so san pham mong muon trong 1 trang
+        List<Product> list = dao.getListByPage(p, start, end);
+
+        //tra ve list da phan trang
+        request.setAttribute("listCC", listC);
+        request.setAttribute("tag", cateID);
+        request.setAttribute("listCP", list);
+        request.setAttribute("num", num);
+        request.getRequestDispatcher("subHome.jsp").forward(request, response);
 
     }
 

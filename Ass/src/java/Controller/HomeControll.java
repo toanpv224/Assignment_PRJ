@@ -63,7 +63,6 @@ public class HomeControll extends HttpServlet {
         //processRequest(request, response);
         DAO dao = new DAO();
         List<Product> p = dao.getAllProduct();
-        HttpSession session = request.getSession();
         
         
         //so trang va so san pham trong 1 trang

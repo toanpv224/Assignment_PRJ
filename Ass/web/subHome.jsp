@@ -74,15 +74,28 @@
 
             </div>
         </section>
+        <c:if test="${requestScope.tag != null}">
         <section class="home-sp">
             <div class="page-trang">
-                <a href="home?page=${1}">First</a>
+                <a href="category?page=${1}&&cid=${requestScope.tag}">First</a>
                 <c:forEach begin="${1}" end="${requestScope.num}" var="i">
-                    <a class="page-num" href="home?page=${i}">${i}</a>
+                    <a class="page-num" href="category?page=${i}&&cid=${requestScope.tag}">${i}</a>
                 </c:forEach>
-                <a href="home?page=${requestScope.num}">Last</a>
+                <a href="category?page=${requestScope.num}&&cid=${requestScope.tag}">Last</a>
             </div>
         </section>
+        </c:if>
+        <c:if test="${requestScope.tag == null}">
+        <section class="home-sp">
+            <div class="page-trang">
+                <a href="search?page=${1}&&txt=${requestScope.tags}">First</a>
+                <c:forEach begin="${1}" end="${requestScope.num}" var="i">
+                    <a class="page-num" href="search?page=${i}&&txt=${requestScope.tags}">${i}</a>
+                </c:forEach>
+                <a href="search?page=${requestScope.num}&&txt=${requestScope.tags}">Last</a>
+            </div>
+        </section>
+        </c:if>
         <jsp:include page="Footer.jsp"></jsp:include>
 
 
@@ -92,7 +105,7 @@
             function searchByName(param) {
                 var txtSearch = param.value;
                 $.ajax({
-                    url: "/Project_banhang/searchAjax",
+                    url: "SearchByAjax",
                     type: "get", //send it through get method
                     data: {
                         txt: txtSearch

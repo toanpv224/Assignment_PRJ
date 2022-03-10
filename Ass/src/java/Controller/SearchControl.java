@@ -39,13 +39,37 @@ public class SearchControl extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String txtSearch = request.getParameter("txt");//giay chay bo
         DAO dao = new DAO();
-        List<Product> list = dao.searchByName(txtSearch);
+        List<Product> p = dao.searchByName(txtSearch);
         List<Category> listC = dao.getAllCategory();
-        Product last = dao.getLast();
         
+
+        //so trang va so san pham trong 1 trang
+        int page, numperpage = 6;
+        // so san pham muoon phan trang
+        int size = p.size();
+        // so trang cua maf nguoi dung ddang chon
+        int num = (size % 6 == 0 ? (size / 6) : ((size / 6)) + 1);
+        //lay so trang truyen vao
+        String xpage = request.getParameter("page");
+        //neu so trang truyen vao = null tra ve trang so 1
+        if (xpage == null) {
+            page = 1;
+            //neu so trang truyen vao != null tra ve trang truyen vao
+        } else {
+            page = Integer.parseInt(xpage);
+        }
+        //lay vi tri the tu list san pham muon phan trang tu so san pham mong muon trong 1 trang
+        int start, end;
+        start = (page - 1) * numperpage;//index bat dau
+        end = Math.min(page * numperpage, size);//index ket thuc
+        //chia cac san pham muon phan trang tu vi tri -> tra ve 1 trang voi so san pham mong muon trong 1 trang
+        List<Product> list = dao.getListByPage(p, start, end);
+
+        //tra ve list da phan trang
         request.setAttribute("listCP", list);
-        request.setAttribute("listCC", listC);
-        request.setAttribute("p", last);
+        request.setAttribute("listCC", listC);        
+        request.setAttribute("num", num);
+        request.setAttribute("tags", txtSearch);
         request.setAttribute("txtS", txtSearch);
         request.getRequestDispatcher("subHome.jsp").forward(request, response);
     }

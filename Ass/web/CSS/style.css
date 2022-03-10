@@ -188,7 +188,8 @@ nav .nav-bar .logo a {
 }
 
 .darkLight-searchBox .dark-light,
-.darkLight-searchBox .searchToggle {
+.darkLight-searchBox .searchToggle,
+.darkLight-searchBox .cartBox {
     height: 40px;
     width: 40px;
     display: flex;
@@ -198,12 +199,22 @@ nav .nav-bar .logo a {
 }
 
 .dark-light i,
-.searchToggle i {
+.searchToggle i,
+.cartBox i{
     position: absolute;
     color: var(--text-color);
     font-size: 22px;
     cursor: pointer;
     transition: all 0.3s ease;
+}
+
+.dark-light i:hover,
+.searchToggle i:hover,
+.cartBox i:hover {
+    padding: 5px;
+    border-radius: 4px;
+    color: var(--text-color-3);
+    background: var(--text-color);
 }
 
 .dark-light i.sun {

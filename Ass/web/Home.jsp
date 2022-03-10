@@ -96,7 +96,7 @@
             function searchByName(param) {
                 var txtSearch = param.value;
                 $.ajax({
-                    url: "/Project_banhang/searchAjax",
+                    url: "SearchByAjax",
                     type: "get", //send it through get method
                     data: {
                         txt: txtSearch

@@ -38,6 +38,11 @@
         </div>
 
         <div class="darkLight-searchBox">
+            <div class="cartBox">
+                <a href="#"></a>
+                <i class='bx bx-cart-alt'></i>                
+                </a>
+            </div>
             <div class="dark-light">
                 <i class="bx bx-moon moon"></i>
                 <i class="bx bx-sun sun"></i>

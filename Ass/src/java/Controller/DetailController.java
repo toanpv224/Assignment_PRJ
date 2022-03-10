@@ -42,6 +42,8 @@ public class DetailController extends HttpServlet {
         Product last = dao.getLast();
         HttpSession session = request.getSession();
         
+        
+        
         request.setAttribute("detail", pro);
         session.setAttribute("listCC", listC);
         request.getRequestDispatcher("Detail.jsp").forward(request, response);
