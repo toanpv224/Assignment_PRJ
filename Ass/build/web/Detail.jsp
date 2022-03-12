@@ -112,7 +112,7 @@
         <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
         <script>
             function myFunction(id) {
-                let text = "Product added to cart　(○｀ 3′○)\nGo to Cart OK or Cancel.";
+                let text = "Đã thêm sản phẩm vào giỏ hàng　(○｀ 3′○)\nKiểm tra giỏ hàng OK or Cancel.";
                 if (confirm(text) === true) {
                     window.location.href = 'cart?id=' + id + '&&index=Cart';
                 }else{

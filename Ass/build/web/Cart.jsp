@@ -83,19 +83,19 @@
                                                     </td>
                                                 </tr> 
                                             </c:forEach>
-                                        
+
                                         </tbody>
                                     </table>
                                 </div>
                                 <!-- End -->
                                 <section class="home-sp">
-                                            <div class="page-trang table">
-                                                <a href="showcart?page=${1}">First</a>
-                                                <c:forEach begin="${1}" end="${requestScope.num}" var="i">
-                                                    <a class="page-num" href="showcart?page=${i}">${i}</a>
-                                                </c:forEach>
-                                                <a href="showcart?page=${requestScope.num}">Last</a>
-                                            </div>
+                                    <div class="page-trang table">
+                                        <a href="showcart?page=${1}">First</a>
+                                        <c:forEach begin="${1}" end="${requestScope.num}" var="i">
+                                            <a class="page-num" href="showcart?page=${i}">${i}</a>
+                                        </c:forEach>
+                                        <a href="showcart?page=${requestScope.num}">Last</a>
+                                    </div>
                                 </section>
                             </div>
                         </div>
@@ -112,7 +112,7 @@
                                         <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tổng thanh toán</strong>
                                             <h5 class="font-weight-bold">${sum} ₫</h5>
                                         </li>
-                                    </ul><a href="buy" class="btn btn-dark rounded-pill py-2 btn-block">Mua hàng</a>
+                                    </ul><a href="#" onclick="myFunction()" class="btn btn-dark rounded-pill py-2 btn-block">Mua hàng</a>
                                 </div>
                             </div>
                         </div>
@@ -121,6 +121,14 @@
                 </div>
             </div>
         </div>
+        <script>
+            function myFunction() {
+                let text = "Xác nhận đặt hàng!\nXác nhận OK \nhoặc Hủy.";
+                if (confirm(text) === true) {
+                    window.location.href = 'order';
+                }
+            }
+        </script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
