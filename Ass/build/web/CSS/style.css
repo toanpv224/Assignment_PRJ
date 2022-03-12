@@ -17,7 +17,7 @@
     --nav-color: #307e7e;
     --side-nav: #010718;
     --text-color: #FFF;
-    --text-color-2: rgb(110, 187, 231);
+    --text-color-2: rgb(255, 123, 0);
     --text-color-3: rgb(27, 27, 27);
     --text-color-4: rgb(24, 19, 19);
     --search-bar: #F2F2F2;
@@ -31,7 +31,7 @@ body.dark {
     --nav-color: #242526;
     --side-nav: #242526;
     --text-color: #CCC;
-    --text-color-2: rgb(255, 238, 0);
+    --text-color-2: rgb(255, 106, 7);
     --text-color-3: rgb(223, 251, 250);     
     --text-color-4: #FFF;
     --search-bar: #242526;
@@ -620,4 +620,21 @@ section .card .image img{
 .home-sp .page-trang .page-num {
     width: 30px;
     text-align: center;
+}
+
+.container .row {
+    color: #1b1b1b;
+}
+
+.table-responsive .table thead tr{
+    border-spacing: 2px;
+}
+
+.bg-lightt{
+    background-color: var(--nav-color);
+    color: var(--text-color);
+}
+
+.p-4 .btn-dark{
+    background: var(--text-color-2);
 }
