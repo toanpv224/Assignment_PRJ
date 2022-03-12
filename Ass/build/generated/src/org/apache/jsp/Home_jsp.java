@@ -60,6 +60,7 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
+      out.write("\r\n");
       out.write("<!DOCTYPE html>\r\n");
       out.write("<html lang=\"en\">\r\n");
       out.write("    <head>\r\n");
@@ -140,6 +141,14 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <!-- Swiper JS -->\r\n");
       out.write("        <script src=\"https://unpkg.com/swiper/swiper-bundle.min.js\"></script>\r\n");
       out.write("        <script>\r\n");
+      out.write("            function myFunction(id) {\r\n");
+      out.write("                let text = \"Product added to cart　(○｀ 3′○)\\nGo to Cart OK or Cancel.\";\r\n");
+      out.write("                if (confirm(text) === true) {\r\n");
+      out.write("                    window.location.href = 'cart?id=' + id + '&&index=Cart';\r\n");
+      out.write("                }else(confirm(text) === false){\r\n");
+      out.write("                    window.location.href = 'cart?id=' + id + '&&index=home';\r\n");
+      out.write("                }\r\n");
+      out.write("            }\r\n");
       out.write("            function searchByName(param) {\r\n");
       out.write("                var txtSearch = param.value;\r\n");
       out.write("                $.ajax({\r\n");
@@ -222,7 +231,9 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("đ</a>\r\n");
           out.write("                                    </button>\r\n");
           out.write("                                    <button class=\"hireMe\">\r\n");
-          out.write("                                        <a href=\"#\">Add to Cart <i class='bx bx-cart-alt'></i></a>\r\n");
+          out.write("                                        <a href=\"#\" onclick=\"myFunction(");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${o.id}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write(")\">Add to Cart <i class='bx bx-cart-alt'></i></a>\r\n");
           out.write("                                    </button>\r\n");
           out.write("                                </div>\r\n");
           out.write("                            </div>\r\n");

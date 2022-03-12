@@ -596,7 +596,6 @@ section .card .image img{
     display: flex;
     align-items: center;
     justify-content: center;
-
     margin-bottom: 30px;
     height: 10vh;
 }
@@ -637,4 +636,12 @@ section .card .image img{
 
 .p-4 .btn-dark{
     background: var(--text-color-2);
+}
+
+.col-sm-3 .card .text-w a{
+    color: var(--text-color-3);
+}
+
+.rounded .home-sp{
+    border: none;
 }

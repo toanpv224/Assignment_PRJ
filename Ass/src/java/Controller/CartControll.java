@@ -25,6 +25,7 @@ public class CartControll extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String id = request.getParameter("id");
+        String index = request.getParameter("index");
         Cookie arr[] = request.getCookies();
         String txt = "";
         for (Cookie o : arr) {
@@ -42,7 +43,14 @@ public class CartControll extends HttpServlet {
         Cookie c = new Cookie("id", txt);
         c.setMaxAge(3600 * 24 * 10);
         response.addCookie(c);
-        response.sendRedirect("showcart");
+        request.setAttribute("index", index);
+        
+        if (index.equalsIgnoreCase("cart")) {
+            request.getRequestDispatcher("showcart").forward(request, response);
+        } else {
+            request.getRequestDispatcher("home").forward(request, response);
+        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -44,6 +44,7 @@ public class DetailController extends HttpServlet {
         
         
         
+        request.setAttribute("tag", id);
         request.setAttribute("detail", pro);
         session.setAttribute("listCC", listC);
         request.getRequestDispatcher("Detail.jsp").forward(request, response);

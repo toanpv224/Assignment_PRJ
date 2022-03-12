@@ -82,10 +82,20 @@
                                                     </td>
                                                 </tr> 
                                             </c:forEach>
+                                        
                                         </tbody>
                                     </table>
                                 </div>
                                 <!-- End -->
+                                <section class="home-sp">
+                                            <div class="page-trang table">
+                                                <a href="showcart?page=${1}">First</a>
+                                                <c:forEach begin="${1}" end="${requestScope.num}" var="i">
+                                                    <a class="page-num" href="showcart?page=${i}">${i}</a>
+                                                </c:forEach>
+                                                <a href="showcart?page=${requestScope.num}">Last</a>
+                                            </div>
+                                </section>
                             </div>
                         </div>
 

@@ -63,7 +63,7 @@
                                     <button class="aboutMe"><a href="detail?pid=${o.id}">${o.price}đ</a>
                                     </button>
                                     <button class="hireMe">
-                                        <a href="#">Add to Cart <i class='bx bx-cart-alt'></i></a>
+                                        <a href="#" onclick="myFunction(${o.id})">Add to Cart <i class='bx bx-cart-alt'></i></a>
                                     </button>
                                 </div>
                             </div>
@@ -102,6 +102,14 @@
         <!-- Swiper JS -->
         <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
         <script>
+            function myFunction(id) {
+                let text = "Product added to cart　(○｀ 3′○)\nGo to Cart OK or Cancel.";
+                if (confirm(text) === true) {
+                    window.location.href = 'cart?id=' + id + '&&index=cart';
+                }else{
+                    window.location.href = 'cart?id=' + id + '&&index=home';
+                }
+            }
             function searchByName(param) {
                 var txtSearch = param.value;
                 $.ajax({

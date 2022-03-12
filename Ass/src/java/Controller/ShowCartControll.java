@@ -37,37 +37,63 @@ public class ShowCartControll extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         Cookie arr[] = request.getCookies();
+        String index = request.getParameter("index");
         PrintWriter out = response.getWriter();
-        List<Product> list = new ArrayList<>();
+        List<Product> p = new ArrayList<>();
         DAO dao = new DAO();
 
         for (Cookie o : arr) {
             if (o.getName().equals("id")) {
                 String txt[] = o.getValue().split(",");
                 for (String s : txt) {
-                    list.add(dao.getProduct(s));
+                    p.add(dao.getProduct(s));
                 }
             }
         }
 
-        for (int i = 0; i < list.size(); i++) {
+        for (int i = 0; i < p.size(); i++) {
             int count = 1;
-            for (int j = i + 1; j < list.size(); j++) {
-                if (list.get(i).getId() == list.get(j).getId()) {
+            for (int j = i + 1; j < p.size(); j++) {
+                if (p.get(i).getId() == p.get(j).getId()) {
                     count++;
-                    list.remove(j);
+                    p.remove(j);
                     j--;
-                    list.get(i).setAmount(count);
+                    p.get(i).setAmount(count);
                 }
             }
         }
 
         double total = 0;
 
-        for (Product o : list) {
+        for (Product o : p) {
             total = total + o.getAmount() * o.getPrice();
         }
+
+        //so trang va so san pham trong 1 trang
+        int page, numperpage = 5;
+        // so san pham muoon phan trang
+        int size = p.size();
+        // so trang cua maf nguoi dung ddang chon
+        int num = (size % 6 == 0 ? (size / 6) : ((size / 6)) + 1);
+        //lay so trang truyen vao
+        String xpage = request.getParameter("page");
+        //neu so trang truyen vao = null tra ve trang so 1
+        if (xpage == null) {
+            page = 1;
+            //neu so trang truyen vao != null tra ve trang truyen vao
+        } else {
+            page = Integer.parseInt(xpage);
+        }
+        //lay vi tri the tu list san pham muon phan trang tu so san pham mong muon trong 1 trang
+        int start, end;
+        start = (page - 1) * numperpage;//index bat dau
+        end = Math.min(page * numperpage, size);//index ket thuc
+        //chia cac san pham muon phan trang tu vi tri -> tra ve 1 trang voi so san pham mong muon trong 1 trang
+        List<Product> list = dao.getListByPage(p, start, end);
+
+        //tra ve list da phan trang
         request.setAttribute("list", list);
+        request.setAttribute("num", num);
         request.setAttribute("total", total);
         request.setAttribute("vat", 0.1 * total);
         request.setAttribute("sum", 1.1 * total);
