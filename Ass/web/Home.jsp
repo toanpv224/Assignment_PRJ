@@ -66,7 +66,7 @@
                                     <button class="aboutMe"><a href="detail?pid=${o.id}">${o.price}đ</a>
                                     </button>
                                     <button class="hireMe">
-                                        <a href="#">Add to Cart <i class='bx bx-cart-alt'></i></a>
+                                        <a href="cart?id=${o.id}">Add to Cart <i class='bx bx-cart-alt'></i></a>
                                     </button>
                                 </div>
                             </div>

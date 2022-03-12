@@ -29,6 +29,9 @@
 
     <body>
         <jsp:include page="Menu.jsp"></jsp:include>
+            <section class="home-bg">
+                <img src="PNG/bg.jpg" />
+            </section>
             <div class="shopping-cart">
                 <div class="px-4 px-lg-0">
 
@@ -42,16 +45,16 @@
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col" class="border-0 bg-light">
+                                                    <th scope="col" class="border-0 bg-lightt">
                                                         <div class="p-2 px-3 text-uppercase">Sản Phẩm</div>
                                                     </th>
-                                                    <th scope="col" class="border-0 bg-light">
+                                                    <th scope="col" class="border-0 bg-lightt">
                                                         <div class="py-2 text-uppercase">Đơn Giá</div>
                                                     </th>
-                                                    <th scope="col" class="border-0 bg-light">
+                                                    <th scope="col" class="border-0 bg-lightt">
                                                         <div class="py-2 text-uppercase">Số Lượng</div>
                                                     </th>
-                                                    <th scope="col" class="border-0 bg-light">
+                                                    <th scope="col" class="border-0 bg-lightt">
                                                         <div class="py-2 text-uppercase">Xóa</div>
                                                     </th>
                                                 </tr>
@@ -87,19 +90,9 @@
                         </div>
 
                         <div class="row py-5 p-4 bg-white rounded shadow-sm">
+                            <div class="col-lg-3"></div>
                             <div class="col-lg-6">
-                                <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Voucher</div>
-                                <div class="p-4">
-                                    <div class="input-group mb-4 border rounded-pill p-2">
-                                        <input type="text" placeholder="Nhập Voucher" aria-describedby="button-addon3" class="form-control border-0">
-                                        <div class="input-group-append border-0">
-                                            <button id="button-addon3" type="button" class="btn btn-dark px-4 rounded-pill"><i class="fa fa-gift mr-2"></i>Sử dụng</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Thành tiền</div>
+                                <div class="bg-lightt rounded-pill px-4 py-3 text-uppercase font-weight-bold">Thành tiền</div>
                                 <div class="p-4">
                                     <ul class="list-unstyled mb-4">
                                         <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tổng tiền hàng</strong><strong>100 $</strong></li>

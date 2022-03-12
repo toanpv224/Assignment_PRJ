@@ -42,23 +42,24 @@ public class DAO extends Context.BaseDAO {
         return list;
     }
 
-    public List<Product> getTop3() {
+    public Product getProduct(String txt) {
+        String query = "select * from product where id = ?";
         List<Product> list = new ArrayList<>();
-        String query = "select top 3 * from product";
         try {
+            
             ps = connection.prepareStatement(query);
+            ps.setString(1, txt);
             rs = ps.executeQuery();
             while (rs.next()) {
-                list.add(new Product(rs.getInt(1),
+                return new Product(rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
                         rs.getDouble(4),
-                        rs.getString(5),
-                        rs.getString(6)));
+                1);
             }
         } catch (Exception e) {
         }
-        return list;
+        return null;
     }
 
     public List<Product> getNext3Product(int amount) {

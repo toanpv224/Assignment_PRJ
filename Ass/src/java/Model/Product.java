@@ -10,6 +10,7 @@ package Model;
  * @author tretr
  */
 public class Product {
+
     private int id;
     private String name;
     private String image;
@@ -38,6 +39,14 @@ public class Product {
         this.price = price;
         this.title = title;
         this.decription = decription;
+    }
+
+    public Product(int id, String name, String image, double price, int amount) {
+        this.id = id;
+        this.name = name;
+        this.image = image;
+        this.price = price;
+        this.amount = amount;
     }
 
     public int getId() {
@@ -95,11 +104,10 @@ public class Product {
     public void setAmount(int amount) {
         this.amount = amount;
     }
-    
+
     @Override
     public String toString() {
         return "Product{" + "id=" + id + ", name=" + name + ", image=" + image + ", price=" + price + ", title=" + title + ", decription=" + decription + '}';
     }
-    
-    
+
 }
