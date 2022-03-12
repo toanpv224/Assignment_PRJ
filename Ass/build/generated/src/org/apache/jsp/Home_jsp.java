@@ -5,6 +5,7 @@ import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 import Model.Product;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -56,6 +57,7 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
@@ -145,7 +147,7 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                let text = \"Product added to cart　(○｀ 3′○)\\nGo to Cart OK or Cancel.\";\r\n");
       out.write("                if (confirm(text) === true) {\r\n");
       out.write("                    window.location.href = 'cart?id=' + id + '&&index=Cart';\r\n");
-      out.write("                }else(confirm(text) === false){\r\n");
+      out.write("                }else{\r\n");
       out.write("                    window.location.href = 'cart?id=' + id + '&&index=home';\r\n");
       out.write("                }\r\n");
       out.write("            }\r\n");
@@ -227,8 +229,8 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${o.id}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write('"');
           out.write('>');
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${o.price}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("đ</a>\r\n");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ String.format(Locale.GERMAN, \"%,.1f\", o.price)}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("₫</a>\r\n");
           out.write("                                    </button>\r\n");
           out.write("                                    <button class=\"hireMe\">\r\n");
           out.write("                                        <a href=\"#\" onclick=\"myFunction(");

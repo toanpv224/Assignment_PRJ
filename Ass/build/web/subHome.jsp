@@ -60,7 +60,7 @@
                                 </div>
 
                                 <div class="button">
-                                    <button class="aboutMe"><a href="detail?pid=${o.id}">${o.price}đ</a>
+                                    <button class="aboutMe"><a href="detail?pid=${o.id}">${o.price}₫</a>
                                     </button>
                                     <button class="hireMe">
                                         <a href="#" onclick="myFunction(${o.id})">Add to Cart <i class='bx bx-cart-alt'></i></a>

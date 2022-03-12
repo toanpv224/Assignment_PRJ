@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -63,21 +64,26 @@ public class ShowCartControll extends HttpServlet {
             }
         }
 
-        double total = 0;
+        double vat, sum, total = 0;
 
         for (Product o : p) {
             total = total + o.getAmount() * o.getPrice();
         }
 
+        vat = 0.1 * total;
+        sum = total + vat;
+        String t = String.format(Locale.GERMAN, "%,.1f", total);
+        String v = String.format(Locale.GERMAN, "%,.1f", vat);
+        String s = String.format(Locale.GERMAN, "%,.1f", sum);
         //so trang va so san pham trong 1 trang
         int page, numperpage = 5;
         // so san pham muoon phan trang
         int size = p.size();
         // so trang cua maf nguoi dung ddang chon
-        int num = (size % 6 == 0 ? (size / 6) : ((size / 6)) + 1);
+        int num = (size % 5 == 0 ? (size / 5) : ((size / 5)) + 1);
         //lay so trang truyen vao
         String xpage = request.getParameter("page");
-        //neu so trang truyen vao = null tra ve trang so 1
+        //neu so trang truyen vao = null tra ve trang so 1 
         if (xpage == null) {
             page = 1;
             //neu so trang truyen vao != null tra ve trang truyen vao
@@ -94,9 +100,9 @@ public class ShowCartControll extends HttpServlet {
         //tra ve list da phan trang
         request.setAttribute("list", list);
         request.setAttribute("num", num);
-        request.setAttribute("total", total);
-        request.setAttribute("vat", 0.1 * total);
-        request.setAttribute("sum", 1.1 * total);
+        request.setAttribute("total", t);
+        request.setAttribute("vat", v);
+        request.setAttribute("sum", s);
         request.getRequestDispatcher("Cart.jsp").forward(request, response);
     }
 
