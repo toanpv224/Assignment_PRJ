@@ -96,7 +96,6 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <title>TYL Clothing</title>\r\n");
       out.write("    </head>\r\n");
       out.write("    <body>\r\n");
-      out.write("\r\n");
       out.write("        ");
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "Menu.jsp", out, false);
       out.write("\r\n");
@@ -142,7 +141,7 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <script src=\"https://unpkg.com/swiper/swiper-bundle.min.js\"></script>\r\n");
       out.write("        <script>\r\n");
       out.write("            function myFunction(id) {\r\n");
-      out.write("                let text = \"Product added to cart　(○｀ 3′○)\\nGo to Cart OK or Cancel.\";\r\n");
+      out.write("                let text = \"Đã thêm sản phẩm vào giỏ hàng　(○｀ 3′○)\\nKiểm tra giỏ hàng OK or Cancel.\";\r\n");
       out.write("                if (confirm(text) === true) {\r\n");
       out.write("                    window.location.href = 'cart?id=' + id + '&&index=Cart';\r\n");
       out.write("                }else{\r\n");
@@ -225,9 +224,10 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("                                <div class=\"button\">\r\n");
           out.write("                                    <button class=\"aboutMe\"><a href=\"detail?pid=");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${o.id}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("\"><fmt:formatNumber value=\"");
+          out.write('"');
+          out.write('>');
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${o.price}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("\" type=\"currency\" />₫</a>\r\n");
+          out.write("₫</a>\r\n");
           out.write("                                    </button>\r\n");
           out.write("                                    <button class=\"hireMe\">\r\n");
           out.write("                                        <a href=\"#\" onclick=\"myFunction(");
