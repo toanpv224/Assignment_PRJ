@@ -110,7 +110,7 @@ public class DAO extends Context.BaseDAO {
     public List<Product> getProductBySellID(int id) {
         List<Product> list = new ArrayList<>();
         String query = "select * from product\n"
-                + "where sell_ID = ?";
+                + "where seller_ID = ?";
         try {
             ps = connection.prepareStatement(query);
             ps.setInt(1, id);

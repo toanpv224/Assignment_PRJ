@@ -42,60 +42,60 @@
                     <c:if test="${requestScope.signmess == null}">
                         <form action="login" class="login" method="post">
                         </c:if>
-                        <c:if test="${requestScope.signmess != null}">
-                            <form action="login" class="login" method="post" style="margin-left: -50%;">   
-                            </c:if>
-                            <p class="text-danger">${requestScope.mess}</p>
-                            <div class="input-box">
-                                <input name="user" type="text" spellcheck="false" required />
-                                <label for="">Username</label>
-                            </div>
-                            <div class="input-box">
-                                <input class="p-input" name="pass" type="password" spellcheck="false" required />
-                                <label for="">Password</label>
-                                <i class="uil uil-eye-slash toggle"></i>
-                            </div>
-                            <div class="pass-link">
-                                <input
-                                    name="remember"
-                                    value="1"
-                                    type="checkbox"
-                                    class="form-check-input"
-                                    id="exampleCheck1"
-                                    />
-                                <label class="form-check-label" for="exampleCheck1"
-                                       >Remember me</label
-                                >
-                            </div>
-                            <div class="field btn">
-                                <div class="btn-layer"></div>
-                                <input type="submit" value="Login" />
-                            </div>
-                            <div class="signup-link">
-                                Not a member? <a href="">Signup now</a>
-                            </div>
-                        </form>
-                        <form action="signup" class="signup" >
-                            <p class="text-danger">${requestScope.signmess}</p>
-                            <div class="input-box">
-                                <input name="user" type="text" spellcheck="false" required />
-                                <label for="">Username</label>
-                            </div>
-                            <div class="input-box">
-                                <input class="p-input" name="pass" type="password" spellcheck="false" required />
-                                <label for="">Password</label>
-                                <i class="uil uil-eye-slash toggle"></i>
-                            </div>           
-                            <div class="input-box">
-                                <input class="p-input" name="repass" type="password" spellcheck="false" required />
-                                <label for="">Confirm password</label>
-                                <i class="uil uil-eye-slash toggle"></i>
-                            </div>                      
-                            <div class="field btn">
-                                <div class="btn-layer"></div>
-                                <input type="submit" value="Signup" />
-                            </div>
-                        </form>
+                    <c:if test="${requestScope.signmess != null}">
+                        <form action="login" class="login" method="post" style="margin-left: -50%;">   
+                        </c:if>
+                        <p class="text-danger">${requestScope.mess}</p>
+                        <div class="input-box">
+                            <input name="user" type="text" spellcheck="false" required />
+                            <label for="">Username</label>
+                        </div>
+                        <div class="input-box">
+                            <input class="p-input" name="pass" type="password" spellcheck="false" required />
+                            <label for="">Password</label>
+                            <i class="uil uil-eye-slash toggle"></i>
+                        </div>
+                        <div class="pass-link">
+                            <input
+                                name="remember"
+                                value="1"
+                                type="checkbox"
+                                class="form-check-input"
+                                id="exampleCheck1"
+                                />
+                            <label class="form-check-label" for="exampleCheck1"
+                                   >Remember me</label
+                            >
+                        </div>
+                        <div class="field btn">
+                            <div class="btn-layer"></div>
+                            <input type="submit" value="Login" />
+                        </div>
+                        <div class="signup-link">
+                            Not a member? <a href="">Signup now</a>
+                        </div>
+                    </form>
+                    <form action="signup" class="signup" >
+                        <p class="text-danger">${requestScope.signmess}</p>
+                        <div class="input-box">
+                            <input name="user" type="text" spellcheck="false" required />
+                            <label for="">Username</label>
+                        </div>
+                        <div class="input-box">
+                            <input class="p-input" name="pass" type="password" spellcheck="false" required />
+                            <label for="">Password</label>
+                            <i class="uil uil-eye-slash toggle"></i>
+                        </div>           
+                        <div class="input-box">
+                            <input class="p-input" name="repass" type="password" spellcheck="false" required />
+                            <label for="">Confirm password</label>
+                            <i class="uil uil-eye-slash toggle"></i>
+                        </div>                      
+                        <div class="field btn">
+                            <div class="btn-layer"></div>
+                            <input type="submit" value="Signup" />
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

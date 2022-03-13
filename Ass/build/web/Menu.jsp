@@ -1,296 +1,88 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!--begin of menu-->
-<c:if test="${sessionScope.acc.isAdmin == 1}">
-    <nav>
-        <div class="nav-bar">
-            <i class="bx bx-menu sidebarOpen"></i>
+<nav>
+    <div class="nav-bar">
+        <i class="bx bx-menu sidebarOpen"></i>
 
-            <span class="logo navLogo"><a href="home">TakeYourLove</a></span>
+        <span class="logo navLogo"><a href="home">TakeYourLove</a></span>
 
-            <div class="menu">
-                <div class="logo-toggle">
-                    <span class="logo"><a href="home">TakeYourLove</a></span>
-                    <i class="bx bx-x siderbarClose"></i>
-                </div>
-
-                <ul class="nav-links">
-                    <li><a href="home">Trang chủ</a></li>
-                    <li>
-                        <a href="category?cid=${0}"
-                           >Sản phẩm<i class="bx bxs-chevron-down arrow sp-arrow"></i
-                            ></a>
-                        <ul class="sp-sub-menu sub-menu">
-                            <li><a href="category?cid=${3}">Quần</a></li>
-                            <li><a href="category?cid=${2}">Áo thun</a></li>
-                            <li><a href="category?cid=${1}">Áo khoác</a></li>
-                            <li><a href="category?cid=${4}">Phụ kiện</a></li>
-                            <li>
-                                <a href="category?cid=${0}"
-                                   >Xem thêm<i
-                                        class="bx bxs-chevron-right arrow more-arrow"
-                                        ></i
-                                    ></a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Xin chào ${sessionScope.acc.user}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Quản lý Account</a>
-                    </li>
-                </ul>
+        <div class="menu">
+            <div class="logo-toggle">
+                <span class="logo"><a href="home">TakeYourLove</a></span>
+                <i class="bx bx-x siderbarClose"></i>
             </div>
 
-            <div class="darkLight-searchBox">
-                <a href="showcart">
-                    <div class="cartBox">
-
-                        <i class='bx bx-cart-alt'></i>                
-                    </div>
-                </a>
-                <div class="dark-light">
-                    <i class="bx bx-moon moon"></i>
-                    <i class="bx bx-sun sun"></i>
-                </div>
-                <form action="search" method="post">
-                    <div class="searchBox">
-                        <div class="searchToggle">
-                            <i class="bx bx-x cancel"></i>
-                            <i class="bx bx-search search"></i>
-                        </div>
-
-                        <div class="search-field">
-                            <input oninput="searchByName(this)" value="${txtS}" name="txt" type="text" placeholder="Tìm  kiếm..." />
-                            <i class="bx bx-search"></i>
-                        </div>
-                    </div>
-                </form>
-                <a href="logout" class="first-button">
-                    Đăng xuất
-                </a>
-
-            </div>
-        </div>
-    </nav>
-</c:if>
-<c:if test="${sessionScope.acc.isSell == 1}">
-
-    <nav>
-        <div class="nav-bar">
-            <i class="bx bx-menu sidebarOpen"></i>
-
-            <span class="logo navLogo"><a href="home">TakeYourLove</a></span>
-
-            <div class="menu">
-                <div class="logo-toggle">
-                    <span class="logo"><a href="home">TakeYourLove</a></span>
-                    <i class="bx bx-x siderbarClose"></i>
-                </div>
-
-                <ul class="nav-links">
-                    <li><a href="home">Trang chủ</a></li>
-                    <li>
-                        <a href="category?cid=${0}"
-                           >Sản phẩm<i class="bx bxs-chevron-down arrow sp-arrow"></i
-                            ></a>
-                        <ul class="sp-sub-menu sub-menu">
-                            <li><a href="category?cid=${3}">Quần</a></li>
-                            <li><a href="category?cid=${2}">Áo thun</a></li>
-                            <li><a href="category?cid=${1}">Áo khoác</a></li>
-                            <li><a href="category?cid=${4}">Phụ kiện</a></li>
-                            <li>
-                                <a href="category?cid=${0}"
-                                   >Xem thêm<i
-                                        class="bx bxs-chevron-right arrow more-arrow"
-                                        ></i
-                                    ></a>
-                            </li>
-                        </ul>
-                    </li>
+            <ul class="nav-links">
+                <li><a href="home">Trang chủ</a></li>
+                <li>
+                    <a href="category?cid=${0}"
+                       >Sản phẩm<i class="bx bxs-chevron-down arrow sp-arrow"></i
+                        ></a>
+                    <ul class="sp-sub-menu sub-menu">
+                        <li><a href="category?cid=${3}">Quần</a></li>
+                        <li><a href="category?cid=${2}">Áo thun</a></li>
+                        <li><a href="category?cid=${1}">Áo khoác</a></li>
+                        <li><a href="category?cid=${4}">Phụ kiện</a></li>
+                        <li>
+                            <a href="category?cid=${0}"
+                               >Xem thêm<i
+                                    class="bx bxs-chevron-right arrow more-arrow"
+                                    ></i
+                                ></a>
+                        </li>
+                    </ul>
+                </li>
+                <c:if test="${sessionScope.acc != null || sessionScope.acc.isSell == 1 || sessionScope.acc.isAdmin == 1}">
                     <li>
                         <a href="#">Xin chào ${sessionScope.acc.user}</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="manager">Quản lý Product</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="darkLight-searchBox">
-                <a href="showcart">
-                    <div class="cartBox">
-
-                        <i class='bx bx-cart-alt'></i>                
-                    </div>
-                </a>
-                <div class="dark-light">
-                    <i class="bx bx-moon moon"></i>
-                    <i class="bx bx-sun sun"></i>
-                </div>
-                <form action="search" method="post">
-                    <div class="searchBox">
-                        <div class="searchToggle">
-                            <i class="bx bx-x cancel"></i>
-                            <i class="bx bx-search search"></i>
-                        </div>
-
-                        <div class="search-field">
-                            <input oninput="searchByName(this)" value="${txtS}" name="txt" type="text" placeholder="Tìm  kiếm..." />
-                            <i class="bx bx-search"></i>
-                        </div>
-                    </div>
-                </form>
-                <a href="logout" class="first-button">
-                    Đăng xuất
-                </a>
-
-            </div>
-        </div>
-    </nav>
-</c:if>
-<c:if test="${sessionScope.acc != null}">  
-    <nav>
-        <div class="nav-bar">
-            <i class="bx bx-menu sidebarOpen"></i>
-
-            <span class="logo navLogo"><a href="home">TakeYourLove</a></span>
-
-            <div class="menu">
-                <div class="logo-toggle">
-                    <span class="logo"><a href="home">TakeYourLove</a></span>
-                    <i class="bx bx-x siderbarClose"></i>
-                </div>
-
-                <ul class="nav-links">
-                    <li><a href="home">Trang chủ</a></li>
+                </c:if>
+                <c:if test="${sessionScope.acc.isSell == 1}">  
                     <li>
-                        <a href="category?cid=${0}"
-                           >Sản phẩm<i class="bx bxs-chevron-down arrow sp-arrow"></i
-                            ></a>
-                        <ul class="sp-sub-menu sub-menu">
-                            <li><a href="category?cid=${3}">Quần</a></li>
-                            <li><a href="category?cid=${2}">Áo thun</a></li>
-                            <li><a href="category?cid=${1}">Áo khoác</a></li>
-                            <li><a href="category?cid=${4}">Phụ kiện</a></li>
-                            <li>
-                                <a href="category?cid=${0}"
-                                   >Xem thêm<i
-                                        class="bx bxs-chevron-right arrow more-arrow"
-                                        ></i
-                                    ></a>
-                            </li>
-                        </ul>
+                        <a href="manager">Quản lý Product</a>
                     </li>
+                </c:if>
+                <c:if test="${sessionScope.acc.isAdmin == 1}">  
                     <li>
-                        <a href="#">Xin chào ${sessionScope.acc.user}</a>
+                        <a href="#">Quản lý Account</a>
                     </li>
-
-                </ul>
-            </div>
-
-            <div class="darkLight-searchBox">
-                <a href="showcart">
-                    <div class="cartBox">
-
-                        <i class='bx bx-cart-alt'></i>                
-                    </div>
-                </a>
-                <div class="dark-light">
-                    <i class="bx bx-moon moon"></i>
-                    <i class="bx bx-sun sun"></i>
-                </div>
-                <form action="search" method="post">
-                    <div class="searchBox">
-                        <div class="searchToggle">
-                            <i class="bx bx-x cancel"></i>
-                            <i class="bx bx-search search"></i>
-                        </div>
-
-                        <div class="search-field">
-                            <input oninput="searchByName(this)" value="${txtS}" name="txt" type="text" placeholder="Tìm  kiếm..." />
-                            <i class="bx bx-search"></i>
-                        </div>
-                    </div>
-                </form>
-                <a href="logout" class="first-button">
-                    Đăng xuất
-                </a>
-
-            </div>
+                </c:if>
+            </ul>
         </div>
-    </nav>
-</c:if>
-<c:if test="${sessionScope.acc == null}">
-    <nav>
-        <div class="nav-bar">
-            <i class="bx bx-menu sidebarOpen"></i>
 
-            <span class="logo navLogo"><a href="home">TakeYourLove</a></span>
+        <div class="darkLight-searchBox">
+            <a href="showcart?index=cart">
+                <div class="cartBox">
 
-            <div class="menu">
-                <div class="logo-toggle">
-                    <span class="logo"><a href="home">TakeYourLove</a></span>
-                    <i class="bx bx-x siderbarClose"></i>
+                    <i class='bx bx-cart-alt'></i>                
                 </div>
-
-                <ul class="nav-links">
-                    <li><a href="home">Trang chủ</a></li>
-                    <li>
-                        <a href="category?cid=${0}"
-                           >Sản phẩm<i class="bx bxs-chevron-down arrow sp-arrow"></i
-                            ></a>
-                        <ul class="sp-sub-menu sub-menu">
-                            <li><a href="category?cid=${3}">Quần</a></li>
-                            <li><a href="category?cid=${2}">Áo thun</a></li>
-                            <li><a href="category?cid=${1}">Áo khoác</a></li>
-                            <li><a href="category?cid=${4}">Phụ kiện</a></li>
-                            <li>
-                                <a href="category?cid=${0}"
-                                   >Xem thêm<i
-                                        class="bx bxs-chevron-right arrow more-arrow"
-                                        ></i
-                                    ></a>
-                            </li>
-                        </ul>
-                    </li>
-
-                </ul>
+            </a>
+            <div class="dark-light">
+                <i class="bx bx-moon moon"></i>
+                <i class="bx bx-sun sun"></i>
             </div>
-
-            <div class="darkLight-searchBox">
-                <a href="showcart?index=cart">
-                    <div class="cartBox">
-
-                        <i class='bx bx-cart-alt'></i>                
+            <form action="search" method="post">
+                <div class="searchBox">
+                    <div class="searchToggle">
+                        <i class="bx bx-x cancel"></i>
+                        <i class="bx bx-search search"></i>
                     </div>
-                </a>
-                <div class="dark-light">
-                    <i class="bx bx-moon moon"></i>
-                    <i class="bx bx-sun sun"></i>
+
+                    <div class="search-field">
+                        <input oninput="searchByName(this)" value="${txtS}" name="txt" type="text" placeholder="Tìm  kiếm..." />
+                        <i class="bx bx-search"></i>
+                    </div>
                 </div>
-                <form action="search" method="post">
-                    <div class="searchBox">
-                        <div class="searchToggle">
-                            <i class="bx bx-x cancel"></i>
-                            <i class="bx bx-search search"></i>
-                        </div>
-
-                        <div class="search-field">
-                            <input oninput="searchByName(this)" value="${txtS}" name="txt" type="text" placeholder="Tìm  kiếm..." />
-                            <i class="bx bx-search"></i>
-                        </div>
-                    </div>
-                </form>
-                <a href="Loginform.jsp" class="first-button">
-                    Đăng nhập
-                </a>
-
-            </div>
+            </form>
+            <c:if test="${sessionScope.acc == null}">
+                <a href="Loginform.jsp" class="first-button">Đăng nhập</a>
+            </c:if>
+            <c:if test="${sessionScope.acc != null || sessionScope.acc.isSell == 1 || sessionScope.acc.isAdmin == 1}">  
+                <a href="logout" class="first-button">Đăng xuất</a>
+            </c:if>
         </div>
-    </nav>
-</c:if>
-
+    </div>
+</nav>
 
 

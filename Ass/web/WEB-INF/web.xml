@@ -48,6 +48,10 @@
         <servlet-name>SignUpControll</servlet-name>
         <servlet-class>Controller.SignUpControll</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManagerControl</servlet-name>
+        <servlet-class>Controller.ManagerControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeControll</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>SignUpControll</servlet-name>
         <url-pattern>/signup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagerControl</servlet-name>
+        <url-pattern>/manager</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
