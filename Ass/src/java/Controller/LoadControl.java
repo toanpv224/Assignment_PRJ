@@ -6,7 +6,6 @@
 package Controller;
 
 import DAO.DAO;
-import Model.Account;
 import Model.Category;
 import Model.Product;
 import java.io.IOException;
@@ -16,13 +15,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author tretr
  */
-public class ManagerControl extends HttpServlet {
+public class LoadControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,42 +34,14 @@ public class ManagerControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        Account a = (Account) session.getAttribute("acc");
-        int id = a.getId();
+        String id = request.getParameter("pid");
         DAO dao = new DAO();
-        List<Product> p = dao.getProductBySellID(id);
+        Product p = dao.getProductByID(id);
         List<Category> listC = dao.getAllCategory();
 
-        
-        //so trang va so san pham trong 1 trang
-        int page, numperpage = 5;
-        // so san pham muoon phan trang
-        int size = p.size();
-        // so trang cua maf nguoi dung ddang chon
-        int num = (size % 5 == 0 ? (size / 5) : ((size / 5)) + 1);
-        //lay so trang truyen vao
-        String xpage = request.getParameter("page");
-        //neu so trang truyen vao = null tra ve trang so 1
-        if (xpage == null) {
-            page = 1;
-        //neu so trang truyen vao != null tra ve trang truyen vao
-        } else {
-            page = Integer.parseInt(xpage);
-        }
-        //lay vi tri the tu list san pham muon phan trang tu so san pham mong muon trong 1 trang
-        int start, end;
-        start = (page - 1) * numperpage;//index bat dau
-        end = Math.min(page * numperpage, size);//index ket thuc
-        //chia cac san pham muon phan trang tu vi tri -> tra ve 1 trang voi so san pham mong muon trong 1 trang
-        List<Product> list = dao.getListByPage(p, start, end);
-        
-        //tra ve list da phan trang
-        
-        request.setAttribute("num", num);
+        request.setAttribute("detail", p);
         request.setAttribute("listCC", listC);
-        request.setAttribute("listP", list);
-        request.getRequestDispatcher("ManagerProduct.jsp").forward(request, response);
+        request.getRequestDispatcher("Update.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

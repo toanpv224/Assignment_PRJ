@@ -149,7 +149,7 @@ public class DAO extends Context.BaseDAO {
         return list;
     }
 
-    public Product getProductByID(String id) {
+        public Product getProductByID(String id) {
         String query = "select * from Product\n"
                 + "where id = ?";
         try {
@@ -284,7 +284,7 @@ public class DAO extends Context.BaseDAO {
     public void insertProduct(String name, String image, String price,
             String title, String description, String category, int sid) {
         String query = "INSERT [dbo].[product] \n"
-                + "([name], [image], [price], [title], [description], [cateID], [sell_ID])\n"
+                + "([name], [image], [price], [title], [decription], [cateID], [seller_ID])\n"
                 + "VALUES(?,?,?,?,?,?,?)";
         try {
             ps = connection.prepareStatement(query);
@@ -307,7 +307,7 @@ public class DAO extends Context.BaseDAO {
                 + "[image] = ?,\n"
                 + "price = ?,\n"
                 + "title = ?,\n"
-                + "[description] = ?,\n"
+                + "[decription] = ?,\n"
                 + "cateID = ?\n"
                 + "where id = ?";
         try {
@@ -349,12 +349,8 @@ public class DAO extends Context.BaseDAO {
     
     public static void main(String[] args) {
         DAO dao = new DAO();
-        List<Product> list = dao.getAllProduct();
-//        for (Product product : list) {
-//            System.out.println(product);
-//        }
-        int i =dao.count("a");
-        System.out.println(i);
+        Account a=dao.login("meta", "zxcvbnm");
+        System.out.println(a);
     }
 
     @Override

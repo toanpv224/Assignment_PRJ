@@ -47,12 +47,13 @@
                     <div class="table-wrapper">
                         <div class="table-title">
                             <div class="row">
-                                <div class="col-sm-6">
+                                <div class="col-sm-4"></div>
+                                <div class="col-sm-8">
                                     <h2>Manage <b>Product</b></h2>
                                 </div>
-                                <div class="col-sm-9">
-                                    <a href="#addEmployeeModal"  class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Product</span></a>
-                                    <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
+                                <div class="col-sm-6">
+                                    <a href="#addEmployeeModal"  class="btn btn-success" data-toggle="modal"><i class='bx bx-add-to-queue'></i> <span>Add New Product</span></a>
+                                    <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class='bx bx-folder-minus' ></i> <span>Delete</span></a>						
                                 </div>
                             </div>
                         </div>
@@ -88,29 +89,21 @@
                                     </td>
                                     <td>${o.price} $</td>
                                     <td>
-                                        <a href="loadProduct?pid=${o.id}"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                        <a href="delete?pid=${o.id}" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                        <a href="loadu?pid=${o.id}"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                        <a href="#" onclick="myFunction(${o.id})" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                     </td>
                                 </tr>
                             </c:forEach>
                         </tbody>
                     </table>
-                    <div class="clearfix">
-                        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                        <ul class="pagination">
-                            <li class="page-item disabled"><a href="#">Previous</a></li>
-                            <li class="page-item"><a href="#" class="page-link">1</a></li>
-                            <li class="page-item"><a href="#" class="page-link">2</a></li>
-                            <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                            <li class="page-item"><a href="#" class="page-link">4</a></li>
-                            <li class="page-item"><a href="#" class="page-link">5</a></li>
-                            <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                        </ul>
-                    </div>
+                    
+                <div class="page-trang">
+                <a href="manager?page=${1}">First</a>
+                <c:forEach begin="${1}" end="${requestScope.num}" var="i">
+                    <a class="page-num" href="manager?page=${i}">${i}</a>
+                </c:forEach>
+                <a href="manager?page=${requestScope.num}">Last</a>
                 </div>
-                <a href="#"><button type="button" class="btn btn-primary">Back to home</button>
-
-            </div>
             <!-- Edit Modal HTML -->
             <div id="addEmployeeModal" class="modal fade">
                 <div class="modal-dialog">
@@ -160,9 +153,16 @@
                 </div>
             </div>
         </section>
+        
 
-
-
+        <script>
+            function myFunction(id) {
+                let text = "Bạn chắc chắn muốn xóa chứ?\nTôi chắc chắn OK or Cancel.";
+                if (confirm(text) === true) {
+                    window.location.href = 'delete?pid=' + id;
+                }
+            }
+        </script>
         <!-- Swiper JS -->
         <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
         <script src="JS/script.js"></script>

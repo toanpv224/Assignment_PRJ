@@ -646,3 +646,28 @@ section .card .image img{
 .rounded .home-sp{
     border: none;
 }
+.home-sp .container {
+    margin: auto;
+    
+}
+.container .table-wrapper {
+    width: 100%
+}
+.table-wrapper .table-title {
+        color: var(--text-color);
+    background: #fff;
+    padding-bottom: 20px;
+}
+.table-wrapper .table thead {
+        background: #01071881;
+}
+.table-wrapper .table tbody{
+    color: #1b1b1b;
+    background: #fff;
+}
+.table-title .row .col-sm-6{
+    margin-left: 25px;
+}
+.table-title .row .col-sm-6  btn-success{
+    color: var(--text-color);
+}
