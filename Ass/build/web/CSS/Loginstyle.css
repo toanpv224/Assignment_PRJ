@@ -214,13 +214,15 @@ form .btn input[type="submit"] {
   cursor: pointer;
 }
 
-.form-inner .login .input-box {
+.form-inner .login .input-box,
+.form-inner .signup .input-box {
   position: relative;
   height: 50px;
   margin-bottom: 10px;
 }
 
-.form-inner .login .input-box input {
+.form-inner .login .input-box input,
+.form-inner .signup .input-box input {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -231,11 +233,13 @@ form .btn input[type="submit"] {
   transition: all 0.2s linear;
 }
 
-.form-inner .login .input-box input:is(:focus, :valid) {
+.form-inner .login .input-box input:is(:focus, :valid),
+.form-inner .signup .input-box input:is(:focus, :valid) {
   border-color: #4070f4;
 }
 
-.form-inner .login .input-box :is(label, i) {
+.form-inner .login .input-box :is(label, i),
+.form-inner .signup .input-box :is(label, i) {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -243,14 +247,16 @@ form .btn input[type="submit"] {
   transition: all 0.2s linear;
 }
 
-.form-inner .login .input-box label {
+.form-inner .login .input-box label, 
+.form-inner .signup .input-box label {
   left: 15px;
   pointer-events: none;
   font-size: 16px;
   font-weight: 400;
 }
 
-.form-inner .login .input-box input:is(:focus, :valid)~label {
+.form-inner .login .input-box input:is(:focus, :valid)~label, 
+.form-inner .signup .input-box input:is(:focus, :valid)~label {
   color: #4070f4;
   top: 0;
   font-size: 12px;
@@ -258,15 +264,23 @@ form .btn input[type="submit"] {
   background-color: #fff;
 }
 
-.form-inner .login .input-box i {
+.form-inner .login .input-box i,
+.form-inner .signup .input-box i{
   right: 15px;
   cursor: pointer;
   font-size: 20px;
 }
 
-.form-inner .login .input-box input:is(:focus, :valid)~i {
+.form-inner .login .input-box input:is(:focus, :valid)~i, 
+.form-inner .signup .input-box input:is(:focus, :valid)~i {
   color: #4070f4;
 }
 .text-danger {
     color: #dc3545!important;
+    font-size: 14px;
+}
+
+.text-danger p{
+  color: #dc3545!important;
+  font-size: 14px;
 }
