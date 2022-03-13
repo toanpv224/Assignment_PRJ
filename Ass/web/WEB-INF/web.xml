@@ -36,6 +36,14 @@
         <servlet-name>OrderControl</servlet-name>
         <servlet-class>Controller.OrderControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginControll</servlet-name>
+        <servlet-class>Controller.LoginControll</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogOutControl</servlet-name>
+        <servlet-class>Controller.LogOutControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeControll</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -71,6 +79,14 @@
     <servlet-mapping>
         <servlet-name>OrderControl</servlet-name>
         <url-pattern>/order</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginControll</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogOutControl</servlet-name>
+        <url-pattern>/logout</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

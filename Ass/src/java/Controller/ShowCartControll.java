@@ -36,9 +36,7 @@ public class ShowCartControll extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        response.setContentType("text/html;charset=UTF-8");
         Cookie arr[] = request.getCookies();
-        String index = request.getParameter("index");
         PrintWriter out = response.getWriter();
         List<Product> p = new ArrayList<>();
         DAO dao = new DAO();
@@ -64,7 +62,9 @@ public class ShowCartControll extends HttpServlet {
             }
         }
 
-        double vat, sum, total = 0;
+        double vat = 0;
+        double sum = 0;
+        double total = 0;
 
         for (Product o : p) {
             total = total + o.getAmount() * o.getPrice();
