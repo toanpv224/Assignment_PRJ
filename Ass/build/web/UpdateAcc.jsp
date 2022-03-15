@@ -36,44 +36,30 @@
             <div id="editEmployeeModal">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form action="update" method="post">
+                        <form action="updateacc" method="post">
                             <div class="modal-header">						
-                                <h4 class="modal-title">Update Product</h4>
+                                <h4 class="modal-title">Update Account</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
-                            <div class="modal-body">					
-                                <div class="form-group">
-                                    <label>ID</label>
-                                    <input value="${pdetail.id}" name="id" type="text" class="form-control" readonly required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Name</label>
-                                    <input value="${pdetail.name}" name="name" type="text" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Image</label>
-                                    <input value="${pdetail.image}" name="image" type="text" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Price</label>
-                                    <input value="${pdetail.price}" name="price" type="text" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Title</label>
-                                    <textarea name="title" class="form-control" required>${pdetail.title}</textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Description</label>
-                                    <textarea name="description" class="form-control" required>${pdetail.description}</textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Category</label>
-                                    <select name="category" class="form-select" aria-label="Default select example">
-                                        <c:forEach items="${listCC}" var="o">
-                                            <option value="${o.cid}">${o.cname}</option>
-                                        </c:forEach>
-                                    </select>
-                                </div>
+                            <div class="form-group">
+                                <label>ID</label>
+                                <input value="${adetail.id}" name="aid" type="text" class="form-control" readonly required>
+                            </div>
+                            <div class="form-group">
+                                <label>UserName</label>
+                                <input value="${adetail.user}" name="user" type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>PassWord</label>
+                                <input value="${adetail.pass}" name="pass" type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Account is:</label>
+                                <select name="roll" class="form-select" aria-label="Default select example">
+                                    <option value="0">Normal</option>
+                                    <option value="1">Seller</option>
+                                    <option value="2">Admin</option>
+                                </select>
                             </div>
                             <div class="modal-footer">
                                 <input type="submit" class="btn btn-success" value="Edit">

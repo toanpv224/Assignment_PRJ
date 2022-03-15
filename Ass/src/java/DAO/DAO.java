@@ -186,6 +186,7 @@ public class DAO extends Context.BaseDAO {
         }
         return null;
     }
+
     public Account getAccountByID(String id) {
         String query = "select * from [Account]\n"
                 + "where uID = ?";
@@ -395,21 +396,21 @@ public class DAO extends Context.BaseDAO {
         } catch (Exception e) {
         }
     }
-    public void editAccount(String user, String pass, int sell,
-            int admin, String pid) {
+
+    public void editAccount(String user, String pass, int sell, int admin, int pid) {
         String query = "update [Account]\n"
                 + "set [user] = ?,\n"
                 + "[pass] = ?,\n"
                 + "[isSell] = ?,\n"
-                + "[isAdmin] = ?,\n"
-                + "where id = ?";
+                + "[isAdmin] = ?\n"
+                + "where uID = ?";
         try {
             ps = connection.prepareStatement(query);
             ps.setString(1, user);
             ps.setString(2, pass);
             ps.setInt(3, sell);
             ps.setInt(4, admin);
-            ps.setString(5, pid);
+            ps.setInt(5, pid);
             ps.executeUpdate();
         } catch (Exception e) {
         }

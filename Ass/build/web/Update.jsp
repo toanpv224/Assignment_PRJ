@@ -36,21 +36,11 @@
             <div id="editEmployeeModal">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <c:if test="${requestScope.tag == null}">
-                            <form action="update?tag=0" method="post">
-                                <div class="modal-header">						
-                                    <h4 class="modal-title">Update Product</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                </div>
-                        </c:if>
-                        <c:if test="${requestScope.tag != null}">
-                            <form action="update?tag=1" method="post">
-                                <div class="modal-header">						
-                                    <h4 class="modal-title">Update Account</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                </div>
-                        </c:if>
-                        <c:if test="${requestScope.tag == null}">
+                        <form action="update" method="post">
+                            <div class="modal-header">						
+                                <h4 class="modal-title">Update Product</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
                             <div class="modal-body">					
                                 <div class="form-group">
                                     <label>ID</label>
@@ -85,38 +75,15 @@
                                     </select>
                                 </div>
                             </div>
-                        </c:if>
-                        <c:if test="${requestScope.tag != null}">
-                        <div class="form-group">
-                                <label>ID</label>
-                                <input value="${adetail.id}" name="id" type="text" class="form-control" readonly required>
+                            <div class="modal-footer">
+                                <input type="submit" class="btn btn-success" value="Edit">
                             </div>
-                            <div class="form-group">
-                                <label>UserName</label>
-                                <input value="${adetail.user}" name="user" type="text" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>PassWord</label>
-                                <input value="${adetail.pass}" name="pass" type="text" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Account is:</label>
-                                <select name="roll" class="form-select" aria-label="Default select example">
-                                    <option value="0">Normal</option>
-                                    <option value="1">Seller</option>
-                                    <option value="2">Admin</option>
-                                </select>
-                            </div>
-                        </c:if>
-                        <div class="modal-footer">
-                            <input type="submit" class="btn btn-success" value="Edit">
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
 
-    </div>
+        </div>
         <script src="JS/manager.js" type="text/javascript"></script>
     </body>
 </html>

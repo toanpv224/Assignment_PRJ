@@ -6,12 +6,8 @@
 package Controller;
 
 import DAO.DAO;
-import Model.Account;
-import Model.Category;
-import Model.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author tretr
  */
-public class LoadControl extends HttpServlet {
+public class UpdateAccControll extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,27 +31,26 @@ public class LoadControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String id = request.getParameter("pid");
-        String tag = request.getParameter("tag");
         DAO dao = new DAO();
-        switch (tag) {
+        String aid = request.getParameter("aid");
+        String user = request.getParameter("user");
+        String pass = request.getParameter("pass");
+        String roll = request.getParameter("roll");
+        int i = Integer.parseInt(aid);
+        switch (roll) {
             case "0":
-                Product p = dao.getProductByID(id);
-                List<Category> listC = dao.getAllCategory();
-
-                request.setAttribute("pdetail", p);
-                request.setAttribute("listCC", listC);
-                request.getRequestDispatcher("Update.jsp").forward(request, response);
+                dao.editAccount(user, pass, 0, 0, i);
+                response.sendRedirect("manageraccount");
                 break;
             case "1":
-                Account a = dao.getAccountByID(id);
-
-                request.setAttribute("adetail", a);
-                request.setAttribute("tag", tag);
-                request.getRequestDispatcher("UpdateAcc.jsp").forward(request, response);
+                dao.editAccount(user, pass, 1, 0, i);
+                response.sendRedirect("manageraccount");
+                break;
+            case "2":
+                dao.editAccount(user, pass, 0, 1, i);
+                response.sendRedirect("manageraccount");
                 break;
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
