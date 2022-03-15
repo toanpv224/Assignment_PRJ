@@ -39,10 +39,10 @@
         </style>
     <body>
         <jsp:include page="Menu.jsp"></jsp:include>
-        <section class="home-bg">
+            <section class="home-bg">
                 <img src="PNG/bg.jpg" />
-        </section>
-        <section class="home-sp">
+            </section>
+            <section class="home-sp">
                 <div class="container">
                     <div class="table-wrapper">
                         <div class="table-title">
@@ -60,7 +60,7 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        
+
                                     </th>
                                     <th>ID</th>
                                     <th>Name</th>
@@ -73,7 +73,7 @@
                             <c:forEach items="${listP}" var="o">
                                 <tr>
                                     <td>
-                                        
+
                                     </td>
                                     <td>${o.id}</td>
                                     <td>${o.name}</td>
@@ -82,83 +82,83 @@
                                     </td>
                                     <td>${o.price} $</td>
                                     <td>
-                                        <a href="loadu?pid=${o.id}"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                        <a href="loadu?pid=${o.id}&&tag=0"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                         <a href="#" onclick="myFunction(${o.id})" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                     </td>
                                 </tr>
                             </c:forEach>
                         </tbody>
                     </table>
-                    
-                <div class="page-trang">
-                <a href="manager?page=${1}">First</a>
-                <c:forEach begin="${1}" end="${requestScope.num}" var="i">
-                    <a class="page-num" href="manager?page=${i}">${i}</a>
-                </c:forEach>
-                <a href="manager?page=${requestScope.num}">Last</a>
-                </div>
-            <!-- Edit Modal HTML -->
-            <div id="addEmployeeModal" class="modal fade">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <form action="add" method="post">
-                            <div class="modal-header">						
-                                <h4 class="modal-title">Add Product</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            </div>
-                            <div class="modal-body">					
-                                <div class="form-group">
-                                    <label>Name</label>
-                                    <input name="name" type="text" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Image</label>
-                                    <input name="image" type="text" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Price</label>
-                                    <input name="price" type="text" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Title</label>
-                                    <textarea name="title" class="form-control" required></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Description</label>
-                                    <textarea name="description" class="form-control" required></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Category</label>
-                                    <select name="category" class="form-select" aria-label="Default select example">
-                                        <c:forEach items="${listCC}" var="o">
-                                            <option value="${o.cid}">${o.cname}</option>
-                                        </c:forEach>
-                                    </select>
-                                </div>
 
-                            </div>
-                            <div class="modal-footer">
-                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                <input type="submit" class="btn btn-success" value="Add">
-                            </div>
-                        </form>
+                    <div class="page-trang">
+                        <a href="manager?page=${1}">First</a>
+                        <c:forEach begin="${1}" end="${requestScope.num}" var="i">
+                            <a class="page-num" href="manager?page=${i}">${i}</a>
+                        </c:forEach>
+                        <a href="manager?page=${requestScope.num}">Last</a>
                     </div>
-                </div>
-            </div>
-        </section>
-        
+                    <!-- Edit Modal HTML -->
+                    <div id="addEmployeeModal" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form action="add" method="post">
+                                    <div class="modal-header">						
+                                        <h4 class="modal-title">Add Product</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    </div>
+                                    <div class="modal-body">					
+                                        <div class="form-group">
+                                            <label>Name</label>
+                                            <input name="name" type="text" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Image</label>
+                                            <input name="image" type="text" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Price</label>
+                                            <input name="price" type="text" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Title</label>
+                                            <textarea name="title" class="form-control" required></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Description</label>
+                                            <textarea name="description" class="form-control" required></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Category</label>
+                                            <select name="category" class="form-select" aria-label="Default select example">
+                                                <c:forEach items="${listCC}" var="o">
+                                                    <option value="${o.cid}">${o.cname}</option>
+                                                </c:forEach>
+                                            </select>
+                                        </div>
 
-        <script>
-            function myFunction(id) {
-                let text = "Bạn chắc chắn muốn xóa chứ?\nTôi chắc chắn OK or Cancel.";
-                if (confirm(text) === true) {
-                    window.location.href = 'delete?pid=' + id;
-                }
-            }
-        </script>
-        <!-- Swiper JS -->
-        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-        <script src="JS/script.js"></script>
-        <script src="JS/manager.js" type="text/javascript"></script>
-    </body>
-</html>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                        <input type="submit" class="btn btn-success" value="Add">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    </section>
+
+
+                    <script>
+                        function myFunction(id) {
+                            let text = "Bạn chắc chắn muốn xóa chứ?\nTôi chắc chắn OK or Cancel.";
+                            if (confirm(text) === true) {
+                                window.location.href = 'delete?pid=' + id + '&&tag=0';
+                            }
+                        }
+                    </script>
+                    <!-- Swiper JS -->
+                    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+                    <script src="JS/script.js"></script>
+                    <script src="JS/manager.js" type="text/javascript"></script>
+                    </body>
+                    </html>

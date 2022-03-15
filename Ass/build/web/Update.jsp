@@ -36,35 +36,45 @@
             <div id="editEmployeeModal">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form action="update" method="post">
-                            <div class="modal-header">						
-                                <h4 class="modal-title">Add Product</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            </div>
+                        <c:if test="${requestScope.tag == null}">
+                            <form action="update?tag=0" method="post">
+                                <div class="modal-header">						
+                                    <h4 class="modal-title">Update Product</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                </div>
+                        </c:if>
+                        <c:if test="${requestScope.tag != null}">
+                            <form action="update?tag=1" method="post">
+                                <div class="modal-header">						
+                                    <h4 class="modal-title">Update Account</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                </div>
+                        </c:if>
+                        <c:if test="${requestScope.tag == null}">
                             <div class="modal-body">					
                                 <div class="form-group">
                                     <label>ID</label>
-                                    <input value="${detail.id}" name="id" type="text" class="form-control" readonly required>
+                                    <input value="${pdetail.id}" name="id" type="text" class="form-control" readonly required>
                                 </div>
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input value="${detail.name}" name="name" type="text" class="form-control" required>
+                                    <input value="${pdetail.name}" name="name" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Image</label>
-                                    <input value="${detail.image}" name="image" type="text" class="form-control" required>
+                                    <input value="${pdetail.image}" name="image" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Price</label>
-                                    <input value="${detail.price}" name="price" type="text" class="form-control" required>
+                                    <input value="${pdetail.price}" name="price" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Title</label>
-                                    <textarea name="title" class="form-control" required>${detail.title}</textarea>
+                                    <textarea name="title" class="form-control" required>${pdetail.title}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea name="description" class="form-control" required>${detail.description}</textarea>
+                                    <textarea name="description" class="form-control" required>${pdetail.description}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Category</label>
@@ -74,19 +84,39 @@
                                         </c:forEach>
                                     </select>
                                 </div>
-
                             </div>
-                            <div class="modal-footer">
-                                <input type="submit" class="btn btn-success" value="Edit">
+                        </c:if>
+                        <c:if test="${requestScope.tag != null}">
+                        <div class="form-group">
+                                <label>ID</label>
+                                <input value="${adetail.id}" name="id" type="text" class="form-control" readonly required>
                             </div>
-                        </form>
-                    </div>
+                            <div class="form-group">
+                                <label>UserName</label>
+                                <input value="${adetail.user}" name="user" type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>PassWord</label>
+                                <input value="${adetail.pass}" name="pass" type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Account is:</label>
+                                <select name="roll" class="form-select" aria-label="Default select example">
+                                    <option value="0">Normal</option>
+                                    <option value="1">Seller</option>
+                                    <option value="2">Admin</option>
+                                </select>
+                            </div>
+                        </c:if>
+                        <div class="modal-footer">
+                            <input type="submit" class="btn btn-success" value="Edit">
+                        </div>
+                    </form>
                 </div>
             </div>
-
         </div>
 
-
+    </div>
         <script src="JS/manager.js" type="text/javascript"></script>
     </body>
 </html>

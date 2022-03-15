@@ -32,16 +32,42 @@ public class UpdateControll extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        String pid = request.getParameter("id");
-        String pname = request.getParameter("name");
-        String pimage = request.getParameter("image");
-        String pprice = request.getParameter("price");
-        String ptitle = request.getParameter("title");
-        String pdescription = request.getParameter("description");
-        String pcategory = request.getParameter("category");
+        String tag = request.getParameter("tag");
         DAO dao = new DAO();
-        dao.editProduct(pname, pimage, pprice, ptitle, pdescription, pcategory, pid);
-        response.sendRedirect("manager");
+        switch (tag) {
+            case "0":
+                String pid = request.getParameter("id");
+                String pname = request.getParameter("name");
+                String pimage = request.getParameter("image");
+                String pprice = request.getParameter("price");
+                String ptitle = request.getParameter("title");
+                String pdescription = request.getParameter("description");
+                String pcategory = request.getParameter("category");
+                dao.editProduct(pname, pimage, pprice, ptitle, pdescription, pcategory, pid);
+                response.sendRedirect("manager");
+                break;
+            case "1":
+                String aid = request.getParameter("id");
+                String user = request.getParameter("user");
+                String pass = request.getParameter("pass");
+                String roll = request.getParameter("roll");
+                switch (roll) {
+                    case "0":
+                        dao.editAccount(user, pass, 0, 0, aid);
+                        response.sendRedirect("manageraccount");
+                        break;
+                    case "1":
+                        dao.editAccount(user, pass, 1, 0, aid);
+                        response.sendRedirect("manageraccount");
+                        break;
+                    case "2":
+                        dao.editAccount(user, pass, 0, 1, aid);
+                        response.sendRedirect("manageraccount");
+                        break;
+                }
+                break;
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

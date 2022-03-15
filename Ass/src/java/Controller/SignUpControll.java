@@ -48,7 +48,7 @@ public class SignUpControll extends HttpServlet {
             }else{
                 //day ve trang login.jsp
                 request.setAttribute("signmess", "Tài khoản đã tồn tại!");
-            request.getRequestDispatcher("Loginform.jsp").forward(request, response);
+                request.getRequestDispatcher("Loginform.jsp").forward(request, response);
             }
         }
     }

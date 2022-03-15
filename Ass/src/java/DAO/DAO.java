@@ -46,7 +46,7 @@ public class DAO extends Context.BaseDAO {
         String query = "select * from product where id = ?";
         List<Product> list = new ArrayList<>();
         try {
-            
+
             ps = connection.prepareStatement(query);
             ps.setString(1, txt);
             rs = ps.executeQuery();
@@ -55,7 +55,7 @@ public class DAO extends Context.BaseDAO {
                         rs.getString(2),
                         rs.getString(3),
                         rs.getDouble(4),
-                1);
+                        1);
             }
         } catch (Exception e) {
         }
@@ -127,12 +127,12 @@ public class DAO extends Context.BaseDAO {
         }
         return list;
     }
-    
+
     public List<Account> getAllAccount() {
         List<Account> list = new ArrayList<>();
         String query = "select * from Account";
         try {
-            ps = connection.prepareStatement(query);           
+            ps = connection.prepareStatement(query);
             rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new Account(rs.getInt(1),
@@ -145,7 +145,7 @@ public class DAO extends Context.BaseDAO {
         }
         return list;
     }
-    
+
     public List<Product> searchByName(String txtSearch) {
         List<Product> list = new ArrayList<>();
         String query = "select * from product\n"
@@ -167,7 +167,7 @@ public class DAO extends Context.BaseDAO {
         return list;
     }
 
-        public Product getProductByID(String id) {
+    public Product getProductByID(String id) {
         String query = "select * from Product\n"
                 + "where id = ?";
         try {
@@ -186,6 +186,25 @@ public class DAO extends Context.BaseDAO {
         }
         return null;
     }
+    public Account getAccountByID(String id) {
+        String query = "select * from [Account]\n"
+                + "where uID = ?";
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return new Account(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getInt(4),
+                        rs.getInt(5));
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
     public Category getCategoryByID(String id) {
         String query = "select * from Category\n"
                 + "where id = ?";
@@ -288,12 +307,47 @@ public class DAO extends Context.BaseDAO {
         }
     }
 
+    public void singupSeller(String user, String pass) {
+        String query = "insert into account\n"
+                + "values(?,?,1,0)";
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, user);
+            ps.setString(2, pass);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public void singupAdmin(String user, String pass) {
+        String query = "insert into account\n"
+                + "values(?,?,0,1)";
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, user);
+            ps.setString(2, pass);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
     public void deleteProduct(String pid) {
         String query = "delete from product\n"
                 + "where id = ?";
         try {
             ps = connection.prepareStatement(query);
             ps.setString(1, pid);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public void deleteAccount(String user) {
+        String query = "delete from [Account]\n"
+                + "where [uID] = ?";
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, user);
             ps.executeUpdate();
         } catch (Exception e) {
         }
@@ -341,18 +395,37 @@ public class DAO extends Context.BaseDAO {
         } catch (Exception e) {
         }
     }
+    public void editAccount(String user, String pass, int sell,
+            int admin, String pid) {
+        String query = "update [Account]\n"
+                + "set [user] = ?,\n"
+                + "[pass] = ?,\n"
+                + "[isSell] = ?,\n"
+                + "[isAdmin] = ?,\n"
+                + "where id = ?";
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, user);
+            ps.setString(2, pass);
+            ps.setInt(3, sell);
+            ps.setInt(4, admin);
+            ps.setString(5, pid);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
 
     public int count(String txtsearch) {
         try {
             String query = "select count (*) from Product where name like ?";
             ps = connection.prepareStatement(query);
             ps.setString(1, "%" + txtsearch + "%");
-            rs = ps.executeQuery(); 
-            while (rs.next()) {                
+            rs = ps.executeQuery();
+            while (rs.next()) {
                 return rs.getInt(1);
             }
         } catch (Exception e) {
-            
+
         }
         return 0;
     }
@@ -364,7 +437,7 @@ public class DAO extends Context.BaseDAO {
         }
         return arr;
     }
-    
+
     public List<Account> getListByPage(List<Account> list, int start, int end) {
         ArrayList<Account> arr = new ArrayList<>();
         for (int i = start; i < end; i++) {
@@ -372,10 +445,10 @@ public class DAO extends Context.BaseDAO {
         }
         return arr;
     }
-    
+
     public static void main(String[] args) {
         DAO dao = new DAO();
-        Account a=dao.login("meta", "zxcvbnm");
+        Account a = dao.login("meta", "zxcvbnm");
         System.out.println(a);
     }
 

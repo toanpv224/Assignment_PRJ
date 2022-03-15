@@ -47,132 +47,124 @@
                     <div class="table-wrapper">
                         <div class="table-title">
                             <div class="row">
-                                <div class="col-sm-4"></div>
-                                <div class="col-sm-8">
-                                    <h2>Manage <b>Product</b></h2>
-                                </div>
-                                <div class="col-sm-6">
-                                    <a href="#addEmployeeModal"  class="btn btn-success" data-toggle="modal"><i class='bx bx-add-to-queue'></i> <span>Add New Product</span></a>
+                                <div class="col-sm-4">
+                                    <div class="col-sm-12">
+                                        <h2>Manage <b>Account</b></h2>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <a href="#addEmployeeModal"  class="btn btn-success" data-toggle="modal"><i class='bx bx-add-to-queue'></i> <span>Add New Account</span></a>
+                                    </div>
+                                    <div class="col-sm-12"> </div>
                                 </div>
                             </div>
-                        </div>
-                        <table class="table table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        
-                                    </th>
-                                    <th>ID</th>
-                                    <th>UserName</th>
-                                    <th>PassWord</th>
-                                    <th>Normal</th>
-                                    <th>Is Seller</th>
-                                    <th>Is Admin</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach items="${listP}" var="o">
-                                <tr>
-                                    <td>
-                                        
-                                    </td>
-                                    <td>${o.id}</td>
-                                    <td>${o.user}</td>
-                                    <td>${o.pass}</td>
-                                    <c:if test="${o.isSell ==0 && o.isAdmin ==0}">
-                                        <td><input type="radio" checked name="${o.user}" value="1" ></td>
-                                        <td><input type="radio" name="${o.user}" value="1" ></td>
-                                        <td><input type="radio" name="${o.user}" value="1" ></td>
-                                        </c:if>
-                                        <c:if test="${o.isSell ==1 && o.isAdmin ==0}">
-                                        <td><input type="radio" name="${o.user}" value="1" ></td>
-                                        <td><input type="radio" checked name="${o.user}" value="1" ></td>
-                                        <td><input type="radio" name="${o.user}" value="1" ></td>
-                                        </c:if>
-                                        <c:if test="${o.isSell ==0 && o.isAdmin ==1}">
-                                        <td><input type="radio" name="${o.user}" value="1" ></td>
-                                        <td><input type="radio" name="${o.user}" value="1" ></td>
-                                        <td><input type="radio" checked name="${o.user}" value="1" ></td>
-                                        </c:if>                                    
-                                    <td>
-                                        <a href="loadu?pid=${o.id}"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                        <a href="#" onclick="myFunction(${o.id})" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                        </tbody>
-                    </table>
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>
 
-                    <div class="page-trang">
-                        <a href="manageraccount?page=${1}">First</a>
-                        <c:forEach begin="${1}" end="${requestScope.num}" var="i">
-                            <a class="page-num" href="manageraccount?page=${i}">${i}</a>
-                        </c:forEach>
-                        <a href="manageraccount?page=${requestScope.num}">Last</a>
+                                        </th>
+                                        <th>ID</th>
+                                        <th>UserName</th>
+                                        <th>PassWord</th>
+                                        <th>Normal</th>
+                                        <th>Is Seller</th>
+                                        <th>Is Admin</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach items="${listP}" var="o">
+                                    <tr>
+                                        <td>
+
+                                        </td>
+                                        <td>${o.id}</td>
+                                        <td>${o.user}</td>
+                                        <td>${o.pass}</td>
+                                        <c:if test="${o.isSell ==0 && o.isAdmin ==0}">
+                                            <td><input type="radio" checked name="${o.user}" value="1" ></td>
+                                            <td><input type="radio" name="${o.user}" value="1" ></td>
+                                            <td><input type="radio" name="${o.user}" value="1" ></td>
+                                            </c:if>
+                                            <c:if test="${o.isSell ==1 && o.isAdmin ==0}">
+                                            <td><input type="radio" name="${o.user}" value="1" ></td>
+                                            <td><input type="radio" checked name="${o.user}" value="1" ></td>
+                                            <td><input type="radio" name="${o.user}" value="1" ></td>
+                                            </c:if>
+                                            <c:if test="${o.isSell ==0 && o.isAdmin ==1}">
+                                            <td><input type="radio" name="${o.user}" value="1" ></td>
+                                            <td><input type="radio" name="${o.user}" value="1" ></td>
+                                            <td><input type="radio" checked name="${o.user}" value="1" ></td>
+                                            </c:if>                                    
+                                        <td>
+                                            <a href="loadu?pid=${o.id}&&tag=1"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                            <a href="#" onclick="myFunction(${o.id})" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
                     </div>
-                    <!-- Edit Modal HTML -->
-                    <div id="addEmployeeModal" class="modal fade">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <form action="add" method="post">
-                                    <div class="modal-header">						
-                                        <h4 class="modal-title">Add Product</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    </div>
-                                    <div class="modal-body">					
-                                        <div class="form-group">
-                                            <label>Name</label>
-                                            <input name="name" type="text" class="form-control" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Image</label>
-                                            <input name="image" type="text" class="form-control" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Price</label>
-                                            <input name="price" type="text" class="form-control" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Title</label>
-                                            <textarea name="title" class="form-control" required></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Description</label>
-                                            <textarea name="description" class="form-control" required></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Category</label>
-                                            <select name="category" class="form-select" aria-label="Default select example">
-                                                <c:forEach items="${listCC}" var="o">
-                                                    <option value="${o.cid}">${o.cname}</option>
-                                                </c:forEach>
-                                            </select>
-                                        </div>
+                </div>
+            </div>
 
-                                    </div>
-                                    <div class="modal-footer">
-                                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                        <input type="submit" class="btn btn-success" value="Add">
-                                    </div>
-                                </form>
+            <div class="page-trang">
+                <a href="manageraccount?page=${1}">First</a>
+                <c:forEach begin="${1}" end="${requestScope.num}" var="i">
+                    <a class="page-num" href="manageraccount?page=${i}">${i}</a>
+                </c:forEach>
+                <a href="manageraccount?page=${requestScope.num}">Last</a>
+            </div>
+            <!-- Edit Modal HTML -->
+            <div id="addEmployeeModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form action="addacc" method="post">
+                            <div class="modal-header" >						
+                                <h4 class="modal-title">Add Account</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
-                        </div>
+                            <div class="modal-body">	
+                                <p class="text-danger">${requestScope.mess}</p>
+                                <div class="form-group">
+                                    <label>UserName</label>
+                                    <input name="user" type="text" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>PassWord</label>
+                                    <input name="pass" type="text" class="form-control" required>
+                                </div>                           
+                                <div class="form-group">
+                                    <label>Account is:</label>
+                                    <select name="roll" class="form-select" aria-label="Default select example">
+                                        <option value="0">Normal</option>
+                                        <option value="1">Seller</option>
+                                        <option value="2">Admin</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                <input type="submit" class="btn btn-success" value="Add">
+                            </div>
+                        </form>
                     </div>
-                    </section>
+                </div>
+            </div>
+        </section>
 
 
-                    <script>
-                        function myFunction(id) {
-                            let text = "Bạn chắc chắn muốn xóa chứ?\nTôi chắc chắn OK or Cancel.";
-                            if (confirm(text) === true) {
-                                window.location.href = 'delete?pid=' + id;
-                            }
-                        }
-                    </script>
-                    <!-- Swiper JS -->
-                    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-                    <script src="JS/script.js"></script>
-                    <script src="JS/manager.js" type="text/javascript"></script>
-                    </body>
-                    </html>
+        <script>
+            function myFunction(id) {
+                let text = "Bạn chắc chắn muốn xóa chứ?\nTôi chắc chắn OK or Cancel.";
+                if (confirm(text) === true) {
+                    window.location.href = 'delete?pid=' + id + '&&tag=1';
+                }
+            }
+        </script>
+        <!-- Swiper JS -->
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <script src="JS/script.js"></script>
+        <script src="JS/manager.js" type="text/javascript"></script>
+    </body>
+</html>

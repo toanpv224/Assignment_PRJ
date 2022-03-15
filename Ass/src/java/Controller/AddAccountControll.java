@@ -7,11 +7,8 @@ package Controller;
 
 import DAO.DAO;
 import Model.Account;
-import Model.Category;
-import Model.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author tretr
  */
-public class LoadControl extends HttpServlet {
+public class AddAccountControll extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,25 +32,29 @@ public class LoadControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String id = request.getParameter("pid");
-        String tag = request.getParameter("tag");
+        String user = request.getParameter("user");
+        String pass = request.getParameter("pass");
+        String roll = request.getParameter("roll");
         DAO dao = new DAO();
-        switch (tag) {
-            case "0":
-                Product p = dao.getProductByID(id);
-                List<Category> listC = dao.getAllCategory();
-
-                request.setAttribute("pdetail", p);
-                request.setAttribute("listCC", listC);
-                request.getRequestDispatcher("Update.jsp").forward(request, response);
-                break;
-            case "1":
-                Account a = dao.getAccountByID(id);
-
-                request.setAttribute("adetail", a);
-                request.setAttribute("tag", tag);
-                request.getRequestDispatcher("Update.jsp").forward(request, response);
-                break;
+        Account a = dao.checkAccountExist(user);
+        if (a == null) {
+            //dc signup
+            switch (roll) {
+                case "0":
+                    dao.singup(user, pass);
+                    break;
+                case "1":
+                    dao.singupSeller(user, pass);
+                    break;
+                case "2":
+                    dao.singupAdmin(user, pass);
+                    break;
+            }
+            response.sendRedirect("manageraccount");
+        } else {
+            //day ve trang login.jsp
+            request.setAttribute("mess", "Tài khoản đã tồn tại!");
+            request.getRequestDispatcher("manageraccount").forward(request, response);
         }
 
     }

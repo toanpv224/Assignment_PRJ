@@ -10,6 +10,7 @@ import Model.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -59,7 +60,17 @@ public class LoginControll extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+//        processRequest(request, response);
+        Cookie arr[] = request.getCookies();
+        for (Cookie o : arr) {
+            if (o.getName().equals("userC")) {
+                request.setAttribute("username", o.getValue());
+            }
+            if (o.getName().equals("passC")) {
+                request.setAttribute("password", o.getValue());
+            }
+        }
+        request.getRequestDispatcher("Loginform.jsp").forward(request, response);
     }
 
     /**
@@ -76,12 +87,24 @@ public class LoginControll extends HttpServlet {
 //        processRequest(request, response);
         String username = request.getParameter("user");
         String password = request.getParameter("pass");
+        String remember = request.getParameter("remember");
         DAO dao = new DAO();
         Account a = dao.login(username, password);
         if (a == null) {
             request.setAttribute("mess", "Username hoặc password không đúng!");
             request.getRequestDispatcher("Loginform.jsp").forward(request, response);
         } else {
+            if (remember != null) {
+                //luu account len tren cookie
+                Cookie u = new Cookie("userC", username);
+                Cookie p = new Cookie("passC", password);
+                response.addCookie(u);//luu u va p len tren chrome
+                response.addCookie(p);
+                u.setMaxAge(3600 * 24 * 30);
+                p.setMaxAge(3600 * 24 * 30);
+                HttpSession session = request.getSession();
+                session.setAttribute("acc", a);
+            }
             HttpSession session = request.getSession();
             session.setAttribute("acc", a);
             response.sendRedirect("home");
