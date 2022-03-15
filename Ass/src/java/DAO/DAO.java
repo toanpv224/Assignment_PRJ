@@ -127,7 +127,25 @@ public class DAO extends Context.BaseDAO {
         }
         return list;
     }
-
+    
+    public List<Account> getAllAccount() {
+        List<Account> list = new ArrayList<>();
+        String query = "select * from Account";
+        try {
+            ps = connection.prepareStatement(query);           
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Account(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getInt(4),
+                        rs.getInt(5)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+    
     public List<Product> searchByName(String txtSearch) {
         List<Product> list = new ArrayList<>();
         String query = "select * from product\n"
@@ -339,8 +357,16 @@ public class DAO extends Context.BaseDAO {
         return 0;
     }
 
-    public List<Product> getListByPage(List<Product> list, int start, int end) {
+    public List<Product> getListProductByPage(List<Product> list, int start, int end) {
         ArrayList<Product> arr = new ArrayList<>();
+        for (int i = start; i < end; i++) {
+            arr.add(list.get(i));
+        }
+        return arr;
+    }
+    
+    public List<Account> getListByPage(List<Account> list, int start, int end) {
+        ArrayList<Account> arr = new ArrayList<>();
         for (int i = start; i < end; i++) {
             arr.add(list.get(i));
         }

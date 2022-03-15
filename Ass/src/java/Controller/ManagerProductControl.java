@@ -64,7 +64,7 @@ public class ManagerProductControl extends HttpServlet {
         start = (page - 1) * numperpage;//index bat dau
         end = Math.min(page * numperpage, size);//index ket thuc
         //chia cac san pham muon phan trang tu vi tri -> tra ve 1 trang voi so san pham mong muon trong 1 trang
-        List<Product> list = dao.getListByPage(p, start, end);
+        List<Product> list = dao.getListProductByPage(p, start, end);
         
         //tra ve list da phan trang
         

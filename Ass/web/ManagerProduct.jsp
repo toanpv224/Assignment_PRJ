@@ -53,7 +53,6 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <a href="#addEmployeeModal"  class="btn btn-success" data-toggle="modal"><i class='bx bx-add-to-queue'></i> <span>Add New Product</span></a>
-                                    <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class='bx bx-folder-minus' ></i> <span>Delete</span></a>						
                                 </div>
                             </div>
                         </div>
@@ -61,10 +60,7 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        <span class="custom-checkbox">
-                                            <input type="checkbox" id="selectAll">
-                                            <label for="selectAll"></label>
-                                        </span>
+                                        
                                     </th>
                                     <th>ID</th>
                                     <th>Name</th>
@@ -77,10 +73,7 @@
                             <c:forEach items="${listP}" var="o">
                                 <tr>
                                     <td>
-                                        <span class="custom-checkbox">
-                                            <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                            <label for="checkbox1"></label>
-                                        </span>
+                                        
                                     </td>
                                     <td>${o.id}</td>
                                     <td>${o.name}</td>

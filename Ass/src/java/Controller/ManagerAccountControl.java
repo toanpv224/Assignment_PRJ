@@ -5,12 +5,18 @@
  */
 package Controller;
 
+import DAO.DAO;
+import Model.Account;
+import Model.Category;
+import Model.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -30,18 +36,32 @@ public class ManagerAccountControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ManagerAccountControl</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ManagerAccountControl at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        HttpSession session = request.getSession();        
+        DAO dao = new DAO();
+        List<Account> p = dao.getAllAccount();
+        List<Category> listC = dao.getAllCategory();
+
+        
+        int page, numperpage = 5;
+        int size = p.size();
+        int num = (size % 5 == 0 ? (size / 5) : ((size / 5)) + 1);
+        String xpage = request.getParameter("page");
+        if (xpage == null) {
+            page = 1;
+        } else {
+            page = Integer.parseInt(xpage);
         }
+        int start, end;
+        start = (page - 1) * numperpage;//index bat dau
+        end = Math.min(page * numperpage, size);//index ket thuc
+        List<Account> list = dao.getListByPage(p, start, end);
+        
+        
+        
+        request.setAttribute("num", num);
+        request.setAttribute("listCC", listC);
+        request.setAttribute("listP", list);
+        request.getRequestDispatcher("ManagerAccount.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
