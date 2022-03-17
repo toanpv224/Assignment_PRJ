@@ -45,7 +45,39 @@
 
         <jsp:include page="List_sp.jsp"></jsp:include>
 
+        <h1 style="margin-top: 20px;background:floralwhite;padding: auto ;text-align: center; color: red;">Sản phẩm hot</h1>
 
+            <section class="home-sptt">
+
+                <div class="swiper mySwiper container">
+                    <div class="swiper-wrapper content">
+                    <c:forEach items="${requestScope.listP}" var="o">
+                        <div class="swiper-slide card">
+                            <div class="card-content">
+                                <div class="image">
+                                    <img src="${o.image}" alt="">
+                                </div>
+
+                                <div class="name-profession">
+                                    <span class="name">${o.name}</span>
+                                    <span class="profession">${o.title}</span>
+                                </div>
+
+                                <div class="button">
+                                    <button class="aboutMe"><a href="detail?pid=${o.id}">${o.price}₫</a></button>
+                                    <button class="hireMe"><a href="#" onclick="myFunction(${o.id})">Add to Cart <i class='bx bx-cart-alt'></i></a></button>
+                                </div>
+                            </div>
+                        </div></c:forEach>
+
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </section>
+
+        <h1 style="margin-top: 20px;background:floralwhite;padding: auto ;text-align: center; color: #222;">Sản phẩm nổi bật</h1>
             <section class="home-sp">
                 <div class="row">
                 <c:forEach items="${requestScope.listP}" var="o">
@@ -92,12 +124,30 @@
 
         <!-- Swiper JS -->
         <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <!-- Initialize Swiper -->
+        <script>
+                                            var swiper = new Swiper(".mySwiper", {
+                                                slidesPerView: 4,
+                                                spaceBetween: 30,
+                                                slidesPerGroup: 4,
+                                                loop: true,
+                                                loopFillGroupWithBlank: true,
+                                                pagination: {
+                                                    el: ".swiper-pagination",
+                                                    clickable: true,
+                                                },
+                                                navigation: {
+                                                    nextEl: ".swiper-button-next",
+                                                    prevEl: ".swiper-button-prev",
+                                                },
+                                            });
+        </script>
         <script>
             function myFunction(id) {
                 let text = "Đã thêm sản phẩm vào giỏ hàng　(○｀ 3′○)\nKiểm tra giỏ hàng OK or Cancel.";
                 if (confirm(text) === true) {
                     window.location.href = 'cart?id=' + id + '&&index=Cart';
-                }else{
+                } else {
                     window.location.href = 'cart?id=' + id + '&&index=home';
                 }
             }

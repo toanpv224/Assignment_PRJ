@@ -82,8 +82,8 @@
                                     </td>
                                     <td>${o.price} $</td>
                                     <td>
-                                        <a href="loadu?pid=${o.id}&&tag=0"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                        <a href="#" onclick="myFunction(${o.id})" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                        <a href="loadu?pid=${o.id}&&tag=0"  class="edit" data-toggle="modal"><i class='bx bxs-edit'></i></a>
+                                        <a href="#" onclick="myFunction(${o.id})" class="delete" data-toggle="modal"><i class='bx bx-trash' ></i></a>
                                     </td>
                                 </tr>
                             </c:forEach>

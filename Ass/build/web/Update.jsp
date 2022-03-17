@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea name="description" class="form-control" required>${pdetail.description}</textarea>
+                                    <textarea name="description" class="form-control" required>${pdetail.decription}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Category</label>

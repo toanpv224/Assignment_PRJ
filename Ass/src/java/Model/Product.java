@@ -16,7 +16,7 @@ public class Product {
     private String image;
     private double price;
     private String title;
-    private String description;
+    private String decription;
     private int amount;
 
     public Product() {
@@ -28,7 +28,7 @@ public class Product {
         this.image = image;
         this.price = price;
         this.title = title;
-        this.description = decription;
+        this.decription = decription;
         this.amount = amount;
     }
 
@@ -38,7 +38,7 @@ public class Product {
         this.image = image;
         this.price = price;
         this.title = title;
-        this.description = decription;
+        this.decription = decription;
     }
 
     public Product(int id, String name, String image, double price, int amount) {
@@ -89,12 +89,12 @@ public class Product {
         this.title = title;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDecription() {
+        return decription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDecription(String decription) {
+        this.decription = decription;
     }
 
     public int getAmount() {
@@ -107,7 +107,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" + "id=" + id + ", name=" + name + ", image=" + image + ", price=" + price + ", title=" + title + ", decription=" + description + '}';
+        return "Product{" + "id=" + id + ", name=" + name + ", image=" + image + ", price=" + price + ", title=" + title + ", decription=" + decription + '}';
     }
 
 }
